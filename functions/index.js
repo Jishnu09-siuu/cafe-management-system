@@ -101,7 +101,7 @@ exports.onReservationCreated = functions.firestore
 
     // SMS readiness trigger (optional)
     if (res.phone) {
-      await smsService.sendSMS(res.phone, `Mocha & Miso: Your reservation ${res.reservationId} for ${res.date} at ${res.time} has been received!`);
+      await smsService.sendSMS(res.phone, `Mocha & Miso: Đã nhận yêu cầu đặt bàn ${res.reservationId} của bạn vào ngày ${res.date}, lúc ${res.time}.`);
     }
   });
 
@@ -140,7 +140,8 @@ exports.onReservationStatusUpdated = functions.firestore
 
       // Send SMS status update if phone exists
       if (afterData.phone) {
-        await smsService.sendSMS(afterData.phone, `Mocha & Miso: Your reservation ${afterData.reservationId} is now ${afterData.status}.`);
+        const localizedStatus = newStatus === 'confirmed' ? 'đã được xác nhận' : 'đã bị hủy';
+        await smsService.sendSMS(afterData.phone, `Mocha & Miso: Đặt bàn ${afterData.reservationId} ${localizedStatus}.`);
       }
     }
   });

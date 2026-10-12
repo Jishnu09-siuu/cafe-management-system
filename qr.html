@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tạo QR bàn | Mocha & Miso</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root { font-family: "DM Sans", "Segoe UI", sans-serif; color: #211914; background: #f7f2ed; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 38px 0 60px; }
+    h1 { margin: 0 0 8px; font: 500 42px Georgia, serif; }
+    p { color: #765f54; }
+    .controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; padding: 22px; margin: 28px 0; background: #fffdfb; border: 1px solid #ded1c7; }
+    label { display: grid; gap: 6px; color: #5a3e36; font-size: 12px; font-weight: 700; }
+    input, button { min-height: 42px; padding: 9px 12px; border: 1px solid #cdbeb3; font: inherit; }
+    input[type="url"] { min-width: min(520px, 70vw); }
+    input[type="number"] { width: 100px; }
+    button { border: 0; background: #5a3e36; color: white; font-weight: 700; cursor: pointer; }
+    .qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
+    .qr-card { display: grid; justify-items: center; gap: 10px; padding: 22px; background: white; border: 1px solid #ded1c7; text-align: center; break-inside: avoid; }
+    .qr-card h2 { margin: 0; font: 500 26px Georgia, serif; }
+    .qr-card p { margin: 0; font-size: 11px; word-break: break-all; }
+    .qr-code { width: 150px; height: 150px; display: grid; place-items: center; }
+    @media print { .controls, header p { display: none; } main { width: 100%; padding: 0; } .qr-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; } .qr-card { padding: 12px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>QR gọi món theo bàn</h1>
+      <p>Tạo và in mã QR để khách quét, gọi món sẽ tự gắn với đúng số bàn.</p>
+    </header>
+    <section class="controls" aria-label="Thiết lập mã QR">
+      <label>Số bàn<input id="table-count" type="number" min="1" max="99" value="20" /></label>
+      <label>Địa chỉ trang gọi món<input id="order-url" type="url" /></label>
+      <button id="generate" type="button">Tạo mã QR</button>
+      <button id="print" type="button">In mã QR</button>
+    </section>
+    <section class="qr-grid" id="qr-grid"></section>
+  </main>
+  <script>
+    const urlInput = document.getElementById('order-url');
+    const publicOrderUrl = 'https://project-quan-cafe.web.app/order.html';
+    urlInput.value = publicOrderUrl;
+    function generateQrs() {
+      const count = Math.min(99, Math.max(1, Number(document.getElementById('table-count').value) || 1));
+      const baseUrl = urlInput.value.replace(/\/?$/, '');
+      const grid = document.getElementById('qr-grid');
+      grid.innerHTML = '';
+      for (let number = 1; number <= count; number += 1) {
+        const table = String(number).padStart(2, '0');
+        const card = document.createElement('article');
+        card.className = 'qr-card';
+        card.innerHTML = `<h2>Bàn ${table}</h2><div class="qr-code"></div><p>${baseUrl}?table=${table}</p>`;
+        grid.appendChild(card);
+        new QRCode(card.querySelector('.qr-code'), { text: `${baseUrl}?table=${table}`, width: 150, height: 150, colorDark: '#211914', colorLight: '#ffffff' });
+      }
+    }
+    document.getElementById('generate').addEventListener('click', generateQrs);
+    document.getElementById('print').addEventListener('click', () => window.print());
+    generateQrs();
+  </script>
+</body>
+</html>

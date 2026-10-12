@@ -25,7 +25,7 @@ function bootAdmin() {
     clearInterval(waitForFirebase);
     const authInstance = window.firebaseAuth || window.auth;
     if (!authInstance) {
-      showLoginError('Firebase failed to load. Please refresh the page.');
+      showLoginError('Không tải được Firebase. Vui lòng tải lại trang.');
     }
   }, 8000);
 }
@@ -37,8 +37,10 @@ if (document.readyState === 'loading') {
 }
 
 /* ──────────────────────────────────────────────────────────
-   1. ADMIN AUTHENTICATION — Firebase Auth primary
-   ────────────────────────────────────────────────────────── */
+  1. ADMIN AUTHENTICATION — Firebase Auth primary
+  ────────────────────────────────────────────────────────── */
+
+const ADMIN_EMAIL = 'lehwangduong@gmail.com';
 
 function initAdminAuth(authInstance) {
   const loginSection = document.getElementById('admin-login-section');
@@ -46,10 +48,11 @@ function initAdminAuth(authInstance) {
   const loginForm    = document.getElementById('admin-login-form');
   const logoutBtn    = document.getElementById('admin-logout-btn');
   const emailDisplay = document.getElementById('logged-admin-email');
+  const forgotPasswordBtn = document.getElementById('admin-forgot-password');
 
   // ── Session state driven by Firebase Auth ──────────────────
-  authInstance.onAuthStateChanged((user) => {
-    if (user) {
+  authInstance.onAuthStateChanged(async (user) => {
+    if (user && user.email && user.email.toLowerCase() === ADMIN_EMAIL) {
       // Authenticated: show dashboard
       if (emailDisplay) emailDisplay.textContent = user.email;
       loginSection.hidden = true;
@@ -57,12 +60,18 @@ function initAdminAuth(authInstance) {
       dashSection.hidden = false;
       dashSection.style.display = 'block';
       loadReservations();
+      loadOrders();
     } else {
       // Not authenticated: show login
       loginSection.hidden = false;
       loginSection.style.display = 'flex';
       dashSection.hidden = true;
       dashSection.style.display = 'none';
+
+      if (user) {
+        await authInstance.signOut();
+        showLoginError('Tài khoản này không có quyền truy cập cổng quản trị.');
+      }
     }
   });
 
@@ -84,12 +93,17 @@ function initAdminAuth(authInstance) {
       if (existingErr) existingErr.remove();
 
       if (!email || !pass) {
-        showLoginError('Please enter both admin email and password.');
+        showLoginError('Vui lòng nhập email quản trị và mật khẩu.');
+        return;
+      }
+
+      if (email.toLowerCase() !== ADMIN_EMAIL) {
+        showLoginError('Email này không có quyền truy cập cổng quản trị.');
         return;
       }
 
       // Loading state
-      if (btnText) btnText.textContent = 'Verifying…';
+      if (btnText) btnText.textContent = 'Đang xác minh…';
       if (submitBtn) submitBtn.disabled = true;
 
       try {
@@ -98,25 +112,43 @@ function initAdminAuth(authInstance) {
         // onAuthStateChanged above handles the view switch
       } catch (err) {
         // Map Firebase error codes to friendly messages
-        let msg = 'Access Denied: Invalid email or password.';
+        let msg = 'Truy cập bị từ chối: email hoặc mật khẩu không đúng.';
         if (err.code === 'auth/invalid-email') {
-          msg = 'Please enter a valid email address.';
+          msg = 'Vui lòng nhập địa chỉ email hợp lệ.';
         } else if (err.code === 'auth/user-disabled') {
-          msg = 'This admin account has been disabled.';
+          msg = 'Tài khoản quản trị này đã bị vô hiệu hóa.';
         } else if (err.code === 'auth/too-many-requests') {
-          msg = 'Too many failed attempts. Please try again later.';
+          msg = 'Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau.';
         } else if (err.code === 'auth/network-request-failed') {
-          msg = 'Network error. Please check your connection.';
+          msg = 'Lỗi kết nối mạng. Vui lòng kiểm tra kết nối của bạn.';
         } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
-          msg = 'Access Denied: Invalid email or password.';
+          msg = 'Truy cập bị từ chối: email hoặc mật khẩu không đúng.';
         } else if (err.code === 'auth/operation-not-allowed') {
-          msg = 'Email/Password login is not enabled. Please contact the administrator.';
+          msg = 'Chưa bật đăng nhập bằng email và mật khẩu. Vui lòng liên hệ quản trị viên.';
         }
         console.error('[Admin Login Error]', err.code, err.message);
         showLoginError(msg);
       } finally {
-        if (btnText) btnText.textContent = 'Log In to Portal';
+        if (btnText) btnText.textContent = 'Đăng nhập';
         if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  }
+
+  if (forgotPasswordBtn) {
+    forgotPasswordBtn.addEventListener('click', async () => {
+      const emailInput = document.getElementById('admin-email');
+      const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+      if (email !== ADMIN_EMAIL) {
+        showLoginError(`Nhập đúng email quản trị ${ADMIN_EMAIL} để nhận liên kết đặt lại mật khẩu.`);
+        return;
+      }
+      try {
+        await authInstance.sendPasswordResetEmail(email);
+        showLoginError('Đã gửi liên kết đặt lại mật khẩu đến email quản trị. Hãy kiểm tra cả thư mục Spam.');
+      } catch (err) {
+        console.error('[Admin Password Reset Error]', err.code, err.message);
+        showLoginError('Không thể gửi email đặt lại mật khẩu. Hãy kiểm tra user này đã tồn tại trong Firebase.');
       }
     });
   }
@@ -129,7 +161,7 @@ function initAdminAuth(authInstance) {
         // onAuthStateChanged above will flip back to login view
         if (loginForm) loginForm.reset();
       } catch (err) {
-        console.warn('Sign-out error:', err.message);
+        console.warn('Lỗi đăng xuất:', err.message);
       }
     });
   }
@@ -154,6 +186,7 @@ function showLoginError(msg) {
 let allReservations = [];
 let activeFilter    = 'all';
 let searchQuery     = '';
+let allOrders       = [];
 
 function initAdminDashboard() {
   // Filter tabs
@@ -201,7 +234,7 @@ function initAdminDashboard() {
 
 function loadReservations() {
   const tbody = document.getElementById('bookings-tbody');
-  if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:30px;">Fetching reservations…</td></tr>';
+  if (tbody) tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:30px;">Đang tải danh sách đặt bàn…</td></tr>';
 
   // Read local backup array
   let localData = [];
@@ -226,12 +259,8 @@ function loadReservations() {
         remoteData.push({ id: doc.id, ...doc.data() });
       });
 
-      // Merge remote and local (avoid duplicates)
-      const mergedMap = new Map();
-      localData.forEach(item => mergedMap.set(item.email + '_' + item.date + '_' + item.time, item));
-      remoteData.forEach(item => mergedMap.set(item.email + '_' + item.date + '_' + item.time, item));
-
-      allReservations = Array.from(mergedMap.values());
+      // Firestore is authoritative when connected; local drafts are not global bookings.
+      allReservations = remoteData;
       // Sort newest first
       allReservations.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 
@@ -242,6 +271,7 @@ function loadReservations() {
       allReservations = localData;
       updateStats();
       renderTable();
+      showToast('Không tải được đặt bàn từ Firestore. Số liệu hiện chỉ gồm dữ liệu lưu trên thiết bị này.', 'error');
     });
   } else {
     allReservations = localData;
@@ -266,6 +296,81 @@ function updateStats() {
   if (confirmedEl) confirmedEl.textContent = confirmed;
   if (guestsEl) guestsEl.textContent = guests;
 }
+
+function loadOrders() {
+  const tbody = document.getElementById('orders-tbody');
+  if (!tbody) return;
+  const dbInstance = window.db || window.firebaseDb || (typeof db !== 'undefined' ? db : null);
+  if (!dbInstance || typeof dbInstance.collection !== 'function') {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">Chưa kết nối được hệ thống đơn gọi món.</td></tr>';
+    return;
+  }
+
+  dbInstance.collection('orders').onSnapshot((snapshot) => {
+    allOrders = [];
+    snapshot.forEach(doc => allOrders.push({ id: doc.id, ...doc.data() }));
+    allOrders.sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+    renderOrders();
+  }, (error) => {
+    console.warn('Orders snapshot notice:', error);
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">Không thể tải đơn gọi món.</td></tr>';
+  });
+}
+
+function formatOrderMoney(value) {
+  return new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+    maximumFractionDigits: 0
+  }).format(Number(value || 0) * 1000);
+}
+
+function getOrderStatusLabel(status) {
+  return { new: 'Mới', preparing: 'Đang làm', served: 'Đã phục vụ', completed: 'Hoàn tất', cancelled: 'Đã hủy' }[status] || status;
+}
+
+function renderOrders() {
+  const tbody = document.getElementById('orders-tbody');
+  if (!tbody) return;
+  if (allOrders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px; color:var(--warm-gray);">Chưa có đơn gọi món.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = allOrders.map(order => {
+    const items = Array.isArray(order.items) ? order.items : [];
+    const status = order.status || 'new';
+    const paymentStatus = order.paymentStatus || 'unpaid';
+    return `
+      <tr>
+        <td><strong>${escapeHtml(order.orderId || order.id)}</strong><br><span class="order-table-number">Bàn ${escapeHtml(order.tableNumber || '--')}</span></td>
+        <td>${items.map(item => `<div>${escapeHtml(item.name)} <strong>×${Number(item.quantity) || 0}</strong></div>`).join('')}${order.note ? `<small class="order-note">${escapeHtml(order.note)}</small>` : ''}</td>
+        <td><strong>${formatOrderMoney(order.total)}</strong></td>
+        <td><span class="order-status order-status--${escapeHtml(status)}">${getOrderStatusLabel(status)}</span></td>
+        <td><span class="payment-status payment-status--${escapeHtml(paymentStatus)}">${paymentStatus === 'paid' ? 'Đã thanh toán' : 'Chưa thanh toán'}</span></td>
+        <td><div class="order-actions">
+          ${status === 'new' ? `<button class="btn-action btn-action--approve" type="button" onclick="updateOrderStatus('${order.id}', 'preparing')">Bắt đầu làm</button>` : ''}
+          ${status === 'preparing' ? `<button class="btn-action btn-action--approve" type="button" onclick="updateOrderStatus('${order.id}', 'served')">Đã mang ra</button>` : ''}
+          ${status === 'served' && paymentStatus !== 'paid' ? `<button class="btn-action btn-action--approve" type="button" onclick="markOrderPaid('${order.id}')">Đã thanh toán</button>` : ''}
+          ${status !== 'completed' && status !== 'cancelled' ? `<button class="btn-action btn-action--cancel" type="button" onclick="updateOrderStatus('${order.id}', 'cancelled')">Hủy</button>` : ''}
+        </div></td>
+      </tr>`;
+  }).join('');
+}
+
+window.updateOrderStatus = function(id, status) {
+  const dbInstance = window.db || window.firebaseDb || (typeof db !== 'undefined' ? db : null);
+  if (!dbInstance || !id) return;
+  dbInstance.collection('orders').doc(id).update({ status, updatedAt: new Date().toISOString() })
+    .catch(error => console.warn('Order status update notice:', error));
+};
+
+window.markOrderPaid = function(id) {
+  const dbInstance = window.db || window.firebaseDb || (typeof db !== 'undefined' ? db : null);
+  if (!dbInstance || !id) return;
+  dbInstance.collection('orders').doc(id).update({ paymentStatus: 'paid', status: 'completed', paidAt: new Date().toISOString(), updatedAt: new Date().toISOString() })
+    .catch(error => console.warn('Order payment update notice:', error));
+};
 
 function renderTable() {
   const tbody = document.getElementById('bookings-tbody');
@@ -292,7 +397,7 @@ function renderTable() {
     tbody.innerHTML = `
       <tr>
         <td colspan="7" style="text-align:center; padding: 48px; color: var(--warm-gray);">
-          No reservations found matching your criteria.
+          Không tìm thấy lượt đặt bàn phù hợp.
         </td>
       </tr>
     `;
@@ -310,7 +415,7 @@ function renderTable() {
     const emailStatusLower = emailStatus.toLowerCase();
     const emailBadgeClass = `email-badge--${emailStatusLower === 'failed' ? 'failed' : (emailStatusLower === 'pending' ? 'pending' : 'sent')}`;
 
-    const guestName = res.customerName || res.name || 'Guest';
+    const guestName = res.customerName || res.name || 'Khách';
     const notesText = res.specialRequest || res.notes || '';
 
     return `
@@ -319,7 +424,7 @@ function renderTable() {
           <div style="font-weight: 600; color: var(--bark);">${escapeHtml(guestName)}</div>
           <div style="font-size: 12px; color: var(--warm-gray);">${escapeHtml(res.email || '')}</div>
           ${res.phone ? `<div style="font-size: 12px; color: var(--coffee-mid);">${escapeHtml(res.phone)}</div>` : ''}
-          ${res.reservationId ? `<div style="font-size: 11px; color: var(--coffee); font-family: monospace;">ID: ${escapeHtml(res.reservationId)}</div>` : ''}
+          ${res.reservationId ? `<div style="font-size: 11px; color: var(--coffee); font-family: monospace;">Mã: ${escapeHtml(res.reservationId)}</div>` : ''}
         </td>
         <td>
           <div style="font-weight: 500;">${escapeHtml(res.date || 'TBD')}</div>
@@ -329,30 +434,40 @@ function renderTable() {
           ${res.guests || 2}
         </td>
         <td style="max-width: 180px; font-size: 13px; color: var(--coffee-mid);">
-          ${notesText ? escapeHtml(notesText) : '<span style="color:#A08070; font-style:italic;">None</span>'}
+          ${notesText ? escapeHtml(notesText) : '<span style="color:#A08070; font-style:italic;">Không có</span>'}
         </td>
         <td>
           <span class="status-badge ${statusClass}">
             <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor;"></span>
-            ${rawStatus}
+            ${escapeHtml(getStatusLabel(rawStatus))}
           </span>
         </td>
         <td>
           <span class="email-badge ${emailBadgeClass}">
-            ${emailStatus}
+            ${escapeHtml(getEmailStatusLabel(emailStatus))}
           </span>
         </td>
         <td>
           <div class="action-btn-group">
-            ${statusLower !== 'confirmed' ? `<button type="button" class="btn-action btn-action--approve" onclick="updateBookingStatus('${res.id}', 'Confirmed')">Confirm</button>` : ''}
-            ${statusLower !== 'cancelled' ? `<button type="button" class="btn-action btn-action--cancel" onclick="updateBookingStatus('${res.id}', 'Cancelled')">Cancel</button>` : ''}
-            <button type="button" class="btn-action btn-action--reply" onclick="openReplyModal('${res.id}')">Reply</button>
+            ${statusLower !== 'confirmed' ? `<button type="button" class="btn-action btn-action--approve" onclick="updateBookingStatus('${res.id}', 'Confirmed')">Xác nhận</button>` : ''}
+            ${statusLower !== 'cancelled' ? `<button type="button" class="btn-action btn-action--cancel" onclick="updateBookingStatus('${res.id}', 'Cancelled')">Hủy</button>` : ''}
+            <button type="button" class="btn-action btn-action--reply" onclick="openReplyModal('${res.id}')">Trả lời</button>
             <button type="button" class="btn-action btn-action--delete" onclick="deleteBooking('${res.id}')">✕</button>
           </div>
         </td>
       </tr>
     `;
   }).join('');
+}
+
+function getStatusLabel(status) {
+  const labels = { pending: 'Đang chờ', confirmed: 'Đã xác nhận', cancelled: 'Đã hủy' };
+  return labels[String(status).toLowerCase()] || status;
+}
+
+function getEmailStatusLabel(status) {
+  const labels = { pending: 'Đang chờ', sent: 'Đã gửi', failed: 'Gửi thất bại' };
+  return labels[String(status).toLowerCase()] || status;
 }
 
 // Toast helper for Admin Portal
@@ -380,6 +495,8 @@ function showToast(message, type = 'info') {
 // Global action functions bound to window for onclick inline handlers
 window.updateBookingStatus = function(id, newStatus) {
   const item = allReservations.find(r => r.id === id);
+  const previousStatus = item ? item.status : null;
+  const previousUpdatedAt = item ? item.updatedAt : null;
   const nowIso = new Date().toISOString();
   if (item) {
     item.status = newStatus;
@@ -402,7 +519,7 @@ window.updateBookingStatus = function(id, newStatus) {
   const dbInstance = window.db || window.firebaseDb || (typeof db !== 'undefined' ? db : null);
   if (dbInstance && typeof dbInstance.collection === 'function' && !id.startsWith('local_')) {
     dbInstance.collection('reservations').doc(id).update({
-      status: newStatus,
+      status: newStatus.toLowerCase(),
       updatedAt: nowIso
     }).then(() => {
       // Fire status-change email via EmailJS
@@ -412,10 +529,26 @@ window.updateBookingStatus = function(id, newStatus) {
           window.sendEmailJS(item, emailType, id);
         }
       }
-      showToast(`Reservation ${newStatus}. Email sent to guest.`, 'success');
+      showToast(`Đặt bàn ${getStatusLabel(newStatus).toLowerCase()}. Email đã được gửi cho khách.`, 'success');
     }).catch(err => {
       console.warn('Firestore status update notice:', err);
-      showToast(`Status updated locally to ${newStatus}.`, 'info');
+      if (item) {
+        item.status = previousStatus;
+        item.updatedAt = previousUpdatedAt;
+      }
+      try {
+        const local = JSON.parse(localStorage.getItem('mocha_reservations') || '[]');
+        local.forEach(r => {
+          if ((r.email === item?.email || r.reservationId === item?.reservationId) && r.date === item?.date && r.time === item?.time) {
+            r.status = previousStatus;
+            r.updatedAt = previousUpdatedAt;
+          }
+        });
+        localStorage.setItem('mocha_reservations', JSON.stringify(local));
+      } catch (storageError) {}
+      updateStats();
+      renderTable();
+      showToast('Không thể lưu trạng thái lên Firestore; số liệu đã được hoàn tác. Vui lòng thử lại.', 'error');
     });
   } else {
     // Local-only: still send email if available
@@ -425,7 +558,7 @@ window.updateBookingStatus = function(id, newStatus) {
         window.sendEmailJS(item, emailType, id);
       }
     }
-    showToast(`Status updated to ${newStatus}.`, 'info');
+    showToast(`Đã cập nhật trạng thái đặt bàn thành "${getStatusLabel(newStatus)}".`, 'info');
   }
 
   updateStats();
@@ -433,7 +566,7 @@ window.updateBookingStatus = function(id, newStatus) {
 };
 
 window.deleteBooking = function(id) {
-  if (!confirm('Are you sure you want to remove this reservation?')) return;
+  if (!confirm('Bạn có chắc muốn xóa lượt đặt bàn này không?')) return;
 
   const item = allReservations.find(r => r.id === id);
   allReservations = allReservations.filter(r => r.id !== id);
@@ -475,8 +608,8 @@ window.openReplyModal = function(id) {
   if (emailInput) emailInput.value = res.email || '';
   if (msgInput) {
     const isCancelled = (res.status || '').toLowerCase() === 'cancelled';
-    const statusText = isCancelled ? 'update regarding your table request' : 'confirmation for your table reservation';
-    msgInput.value = `Dear ${res.customerName || res.name || 'Valued Guest'},\n\nThank you for choosing Mocha & Miso Craft Café!\n\nThis is an official ${statusText} on ${res.date || 'your requested date'} at ${formatTime(res.time)} for ${res.guests || 2} guest(s).\n\nIf you have any questions or changes, feel free to contact us at (555) 234-5678.\n\nWarm regards,\nMocha & Miso Team\n124 Artisan Alley, Craft District`;
+    const statusText = isCancelled ? 'cập nhật về yêu cầu đặt bàn' : 'xác nhận đặt bàn';
+    msgInput.value = `Kính gửi ${res.customerName || res.name || 'Quý khách'},\n\nCảm ơn bạn đã chọn Mocha & Miso!\n\nĐây là thông tin ${statusText} của bạn vào ngày ${res.date || 'ngày bạn yêu cầu'} lúc ${formatTime(res.time)} dành cho ${res.guests || 2} khách.\n\nNếu cần hỗ trợ hoặc thay đổi thông tin, vui lòng liên hệ chúng tôi qua số (555) 234-5678.\n\nThân mến,\nĐội ngũ Mocha & Miso\n124 Artisan Alley, Craft District`;
   }
 
   if (modal) modal.hidden = false;
@@ -500,19 +633,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const body  = document.getElementById('modal-message')?.value?.trim() || '';
 
       if (!email) {
-        showToast('No recipient email found.', 'error');
+        showToast('Chưa có địa chỉ email người nhận.', 'error');
         return;
       }
 
       const cfg = window.EMAILJS_CONFIG;
       if (!cfg || cfg.publicKey === 'YOUR_PUBLIC_KEY' || typeof emailjs === 'undefined') {
-        showToast('EmailJS not configured — please set up credentials first.', 'error');
+        showToast('EmailJS chưa được cấu hình. Vui lòng thiết lập thông tin xác thực trước.', 'error');
         return;
       }
 
       const res = currentReplyResId ? allReservations.find(r => r.id === currentReplyResId) : null;
 
-      sendBtn.textContent = 'Sending…';
+      sendBtn.textContent = 'Đang gửi…';
       sendBtn.disabled = true;
 
       // Use sendEmailJS with 'custom' type and the typed body
@@ -520,13 +653,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const cfg2 = window.EMAILJS_CONFIG;
         const templateParams = {
           to_email:        email,
-          customer_name:   res.customerName || res.name || 'Valued Guest',
+          customer_name:   res.customerName || res.name || 'Quý khách',
           reservation_id:  res.reservationId || res.id || 'N/A',
           date:            res.date || 'TBD',
           time:            (typeof formatTime === 'function' ? formatTime(res.time) : res.time) || 'TBD',
           guests:          String(res.guests || 2),
-          special_request: res.specialRequest || res.notes || 'None',
-          subject:         'A Message from Mocha & Miso Café',
+          special_request: res.specialRequest || res.notes || 'Không có',
+          subject:         'Tin nhắn từ Mocha & Miso Café',
           message_body:    body,
           cafe_address:    '124 Artisan Alley, Craft District',
           cafe_phone:      '(555) 234-5678',
@@ -534,20 +667,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         emailjs.send(cfg2.serviceId, cfg2.templateId, templateParams)
           .then(() => {
-            showToast(`Email sent to ${email} ✓`, 'success');
+            showToast(`Đã gửi email đến ${email} ✓`, 'success');
             if (modal) modal.hidden = true;
           })
           .catch(err => {
             console.warn('[EmailJS Reply Error]', err);
-            showToast('Email failed to send. Check EmailJS credentials.', 'error');
+            showToast('Không gửi được email. Vui lòng kiểm tra cấu hình EmailJS.', 'error');
           })
           .finally(() => {
-            sendBtn.textContent = 'Send Email';
+            sendBtn.textContent = 'Gửi email';
             sendBtn.disabled = false;
           });
       } else {
-        showToast('EmailJS not ready. Please configure credentials.', 'error');
-        sendBtn.textContent = 'Send Email';
+        showToast('EmailJS chưa sẵn sàng. Vui lòng cấu hình thông tin xác thực.', 'error');
+        sendBtn.textContent = 'Gửi email';
         sendBtn.disabled = false;
       }
     });
@@ -557,14 +690,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // Utilities
 function formatTime(timeStr) {
   if (!timeStr) return '';
-  if (timeStr.length === 4) {
-    const hrs = parseInt(timeStr.slice(0, 2), 10);
-    const mins = timeStr.slice(2);
-    const period = hrs >= 12 ? 'PM' : 'AM';
-    const displayHrs = hrs % 12 || 12;
-    return `${displayHrs}:${mins} ${period}`;
-  }
-  return timeStr;
+  const [hourText, minuteText] = timeStr.includes(':')
+    ? timeStr.split(':')
+    : [timeStr.slice(0, 2), timeStr.slice(2)];
+  const hours = Number.parseInt(hourText, 10);
+  if (!Number.isFinite(hours) || !/^\d{2}$/.test(minuteText)) return timeStr;
+
+  const period = hours < 11 ? 'sáng' : hours < 13 ? 'trưa' : hours < 18 ? 'chiều' : 'tối';
+  return `${hours % 12 || 12}:${minuteText} ${period}`;
 }
 
 function escapeHtml(str) {

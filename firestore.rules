@@ -2,12 +2,17 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'lehwangduong@gmail.com';
+    }
+
     match /reservations/{reservation} {
 
       // ── READ ──────────────────────────────────────────────────────────────
       // Only authenticated admins can read reservation data.
       // Public visitors cannot enumerate or read customer bookings.
-      allow read: if request.auth != null;
+      allow read: if isAdmin();
 
       // ── CREATE ────────────────────────────────────────────────────────────
       // Public can create a reservation (from the customer form) but all
@@ -47,12 +52,31 @@ service cloud.firestore {
       // Only authenticated admins can update reservations (e.g., confirm/cancel).
       // The status field must be one of the three allowed values.
       allow update: if
-        request.auth != null
+        isAdmin()
         && request.resource.data.status in ['pending', 'confirmed', 'cancelled'];
 
       // ── DELETE ────────────────────────────────────────────────────────────
       // Only authenticated admins can delete reservations.
-      allow delete: if request.auth != null;
+      allow delete: if isAdmin();
+    }
+
+    match /orders/{order} {
+      // Guests may submit a new order from a table QR code, but cannot read
+      // other orders or change an order after submission.
+      allow create: if
+        request.resource.data.orderId is string
+        && request.resource.data.orderId.size() >= 8
+        && request.resource.data.tableNumber is string
+        && request.resource.data.tableNumber.matches('^[0-9]{2}$')
+        && request.resource.data.items is list
+        && request.resource.data.items.size() >= 1
+        && request.resource.data.items.size() <= 20
+        && request.resource.data.total is number
+        && request.resource.data.total >= 0
+        && request.resource.data.status == 'new'
+        && request.resource.data.paymentStatus == 'unpaid';
+
+      allow read, update, delete: if isAdmin();
     }
 
   }

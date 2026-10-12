@@ -1,10 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyCUQcaDwTMzKPlxK5WCIXwuamVIuHNmna4",
-  authDomain: "mochaandmiso.firebaseapp.com",
-  projectId: "mochaandmiso",
-  storageBucket: "mochaandmiso.firebasestorage.app",
-  messagingSenderId: "683827731019",
-  appId: "1:683827731019:web:eec921049f6fe4aa160bce"
+  apiKey: "AIzaSyCqMH6_r6d0FrJsWGAIDW8Gk5L-cRdF9uI",
+  authDomain: "project-quan-cafe.firebaseapp.com",
+  projectId: "project-quan-cafe",
+  storageBucket: "project-quan-cafe.firebasestorage.app",
+  messagingSenderId: "934988771368",
+  appId: "1:934988771368:web:e3355cbad098d081dd451d",
+  measurementId: "G-8YTXYJLB6K"
 };
 
 firebase.initializeApp(firebaseConfig);

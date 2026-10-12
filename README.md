@@ -1,91 +1,108 @@
-# ☕ Mocha & Miso — Craft Café Website
+# ☕ Mocha & Miso — Website quán cà phê thủ công
 
 <div align="center">
 
 ![Mocha & Miso](./asstes/logo.jpg)
 
-**A premium Japandi-inspired café management system with a public-facing website and a secure admin portal.**
+**Hệ thống quản lý quán cà phê lấy cảm hứng Japandi, gồm website dành cho khách và cổng quản trị bảo mật.**
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-mochaandmiso.web.app-5A3E36?style=for-the-badge)](https://mochaandmiso.web.app)
-[![Admin Portal](https://img.shields.io/badge/🔐_Admin_Portal-Login-8B5E52?style=for-the-badge)](https://mochaandmiso.web.app/admin.html)
-[![Firebase](https://img.shields.io/badge/Firebase-Hosted-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
+[![Xem website](https://img.shields.io/badge/🌐_Xem_website-mochaandmiso.web.app-5A3E36?style=for-the-badge)](https://mochaandmiso.web.app)
+[![Cổng quản trị](https://img.shields.io/badge/🔐_Cổng_quản_trị-Đăng_nhập-8B5E52?style=for-the-badge)](https://mochaandmiso.web.app/admin.html)
+[![Firebase](https://img.shields.io/badge/Firebase-Đã_host-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
 
 </div>
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Ảnh chụp màn hình
 
-### 🏠 Homepage — Hero Section
-![Homepage Hero](./screenshots/hero.png)
+### 🏠 Trang chủ — Phần giới thiệu
+![Phần giới thiệu trang chủ](./screenshots/hero.png)
 
-### 🛡️ Admin Dashboard
-![Admin Dashboard](./screenshots/admin-dashboard.png)
-
----
-
-## ✨ Features
-
-### 🌐 Public Website
-- **Animated Hero Section** — Parallax background, GSAP scroll animations, steam SVG effect
-- **Our Story** — Brand narrative with scroll-reveal text animations
-- **Interactive Menu** — Filterable by category (Drinks, Food, Desserts) with 14+ items
-- **Signature Drinks** — Full-screen showcase of specialty beverages
-- **Photo Gallery** — Masonry-style café gallery
-- **Table Reservation Form** — Real-time Firestore booking with email confirmation
-- **Contact & Location** — Hours, address, and inquiry form
-- **Custom Cursor** — Magnetic cursor with hover effects
-- **Smooth Scroll** — Powered by Lenis smooth scroll library
-- **Fully Responsive** — Mobile-first, hamburger menu on small screens
-
-### 🔐 Admin Portal
-- **Firebase Authentication** — Secure email/password login
-- **Live Reservations Dashboard** — Real-time Firestore listener
-- **KPI Stats** — Total reservations, pending, confirmed, guest count
-- **Reservation Management** — Confirm, cancel, or delete bookings
-- **Search & Filter** — Filter by status or search by guest name/email/phone
-- **Guest Email Reply** — Send emails directly to guests via EmailJS
-- **Toast Notifications** — Live feedback on all admin actions
+### 🛡️ Bảng điều khiển quản trị
+![Bảng điều khiển quản trị](./screenshots/admin-dashboard.png)
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Tính năng
+
+### 🌐 Website dành cho khách
+- **Phần giới thiệu chuyển động** — Ảnh nền thị sai, hiệu ứng cuộn GSAP và hiệu ứng hơi nước
+- **Câu chuyện quán** — Giới thiệu thương hiệu với hiệu ứng hiện chữ khi cuộn
+- **Thực đơn tương tác** — Lọc theo nhóm đồ uống, món ăn và món tráng miệng; hơn 14 món
+- **Món đặc sắc** — Giới thiệu các món và đồ uống nổi bật
+- **Thư viện ảnh** — Bộ sưu tập hình ảnh quán cà phê dạng khảm
+- **Biểu mẫu đặt bàn** — Lưu đặt chỗ theo thời gian thực trên Firestore và gửi email xác nhận
+- **Liên hệ và địa điểm** — Giờ mở cửa, địa chỉ và biểu mẫu liên hệ
+- **Con trỏ tùy chỉnh** — Hiệu ứng con trỏ hút theo nút khi rê chuột
+- **Cuộn mượt** — Sử dụng thư viện Lenis
+- **Tương thích mọi màn hình** — Thiết kế ưu tiên điện thoại, có menu thu gọn
+
+### 🔐 Cổng quản trị
+- **Xác thực Firebase** — Đăng nhập an toàn bằng email và mật khẩu
+- **Bảng đặt bàn trực tiếp** — Cập nhật theo thời gian thực từ Firestore
+- **Thống kê tổng quan** — Tổng lượt đặt, lượt đang chờ, lượt đã xác nhận và số khách
+- **Quản lý đặt bàn** — Xác nhận, hủy hoặc xóa lượt đặt
+- **Tìm kiếm và lọc** — Lọc theo trạng thái hoặc tìm theo tên, email, số điện thoại
+- **Trả lời khách qua email** — Gửi email trực tiếp bằng EmailJS
+- **Thông báo tức thời** — Phản hồi trực tiếp cho mọi thao tác quản trị
+
+### 🍽️ Gọi món bằng QR theo bàn
+- **QR riêng từng bàn** — Mỗi mã mở `order.html?table=01`, `02`...
+- **Giỏ món trên điện thoại** — Khách chọn món, số lượng và ghi chú không cần đăng nhập
+- **Đơn hàng thời gian thực** — Đơn mới hiện trong admin kèm số bàn, món và tổng tiền
+- **Luồng phục vụ** — Mới → Đang làm → Đã phục vụ → Hoàn tất
+- **Ghi nhận thanh toán** — Nhân viên bấm “Đã thanh toán” sau khi thu tiền tại bàn/quầy
+
+---
+
+## 🛠️ Công nghệ sử dụng
 
 | Layer | Technology |
 |---|---|
-| **Frontend** | HTML5, Vanilla CSS, Vanilla JavaScript |
-| **Animations** | GSAP 3, ScrollTrigger, SplitType, Lenis |
-| **Database** | Firebase Firestore |
-| **Authentication** | Firebase Auth (Email/Password) |
-| **Hosting** | Firebase Hosting |
+| **Giao diện** | HTML5, CSS thuần, JavaScript thuần |
+| **Hiệu ứng** | GSAP 3, ScrollTrigger, SplitType, Lenis |
+| **Cơ sở dữ liệu** | Firebase Firestore |
+| **Xác thực** | Firebase Auth (email/mật khẩu) |
+| **Lưu trữ website** | Firebase Hosting |
 | **Email** | EmailJS |
-| **Backend Functions** | Firebase Cloud Functions (Node.js 20) |
+| **Hàm máy chủ** | Firebase Cloud Functions (Node.js 20) |
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Bản chạy trực tuyến
 
 🌐 **Website:** [https://mochaandmiso.web.app](https://mochaandmiso.web.app)
 
-🔐 **Admin Portal:** [https://mochaandmiso.web.app/admin.html](https://mochaandmiso.web.app/admin.html)
-> Admin access requires a registered Firebase Authentication account.
+🔐 **Cổng quản trị:** [https://mochaandmiso.web.app/admin.html](https://mochaandmiso.web.app/admin.html)
+> Cần tài khoản Firebase Authentication đã đăng ký để truy cập trang quản trị.
+
+## 🍽️ Vận hành gọi món bằng QR
+
+1. Mở `qr.html` trên domain đã deploy, chọn số lượng bàn rồi bấm **Tạo mã QR**.
+2. In và đặt từng mã lên đúng bàn. Không dùng URL `localhost` khi in QR cho quán thật.
+3. Khách quét mã, chọn món và gửi đơn. Đường dẫn sẽ tự gắn số bàn.
+4. Nhân viên mở cổng admin, xử lý đơn theo thứ tự **Bắt đầu làm** → **Đã mang ra**.
+5. Sau khi thu tiền, bấm **Đã thanh toán** để hoàn tất đơn.
+
+Phiên bản hiện tại ghi nhận thanh toán thủ công tại quầy hoặc tại bàn. Muốn thu tiền trực tuyến cần tích hợp thêm một cổng thanh toán phù hợp với quốc gia và tài khoản ngân hàng của quán.
 
 ---
 
-## 📁 Project Structure
+## 📁 Cấu trúc dự án
 
 ```
 cafe-management-system/
-├── index.html              # Main public website
-├── admin.html              # Admin portal
-├── admin.js                # Admin dashboard logic & Firebase Auth
-├── main.js                 # Public site interactions & reservation form
-├── style.css               # All styles (shared across pages)
-├── firebase.js             # Firebase initialization
-├── firestore.rules         # Firestore security rules
-├── firebase.json           # Firebase Hosting & Functions config
-├── asstes/                 # Images and media assets
-├── screenshots/            # README screenshots
+├── index.html              # Website dành cho khách
+├── admin.html              # Cổng quản trị
+├── admin.js                # Bảng quản trị và xác thực Firebase
+├── main.js                 # Tương tác website và biểu mẫu đặt bàn
+├── style.css               # Giao diện dùng chung cho các trang
+├── firebase.js             # Khởi tạo Firebase
+├── firestore.rules         # Quy tắc bảo mật Firestore
+├── firebase.json           # Cấu hình Firebase Hosting và Functions
+├── asstes/                 # Hình ảnh và tài nguyên
+├── screenshots/            # Ảnh chụp màn hình trong README
 └── functions/              # Firebase Cloud Functions
     ├── index.js
     ├── services/
@@ -96,57 +113,57 @@ cafe-management-system/
 
 ---
 
-## 🔒 Security
+## 🔒 Bảo mật
 
-- **Firestore Rules** — Only authenticated users can read/update/delete reservations
-- **Public Create** — Anyone can submit a reservation (with field validation)
-- **Firebase Auth** — Admin dashboard locked behind Firebase email/password login
-- **Environment Variables** — Sensitive API keys stored in `functions/.env` (not committed to Git)
-
----
-
-## 🎨 Design System
-
-- **Typography:** Cormorant Garamond (serif headings) + DM Sans (body)
-- **Color Palette:** Warm coffee browns, cream whites, deep bark tones
-- **Style:** Japandi — Japanese minimalism meets Scandinavian warmth
-- **Animations:** GSAP scroll-triggered reveals, magnetic hover effects, parallax
+- **Quy tắc Firestore** — Chỉ người dùng đã xác thực mới có thể đọc, cập nhật hoặc xóa lượt đặt bàn
+- **Tạo yêu cầu công khai** — Bất kỳ ai cũng có thể gửi yêu cầu đặt bàn sau khi các trường được kiểm tra
+- **Firebase Auth** — Bảng quản trị yêu cầu đăng nhập bằng email và mật khẩu Firebase
+- **Biến môi trường** — Khóa API nhạy cảm được lưu trong `functions/.env` và không đưa lên Git
 
 ---
 
-## 📦 Getting Started (Local Development)
+## 🎨 Hệ thống thiết kế
 
-> ⚠️ The site uses Firebase Hosting auto-configuration, so some features work best when served via Firebase.
+- **Kiểu chữ:** Cormorant Garamond (tiêu đề có chân) và DM Sans (nội dung)
+- **Bảng màu:** Nâu cà phê ấm, trắng kem và tông gỗ trầm
+- **Phong cách:** Japandi — tối giản Nhật Bản kết hợp nét ấm áp Bắc Âu
+- **Hiệu ứng:** Hiện nội dung theo vị trí cuộn, hiệu ứng rê chuột và thị sai bằng GSAP
 
-### Prerequisites
+---
+
+## 📦 Bắt đầu chạy dự án trên máy
+
+> ⚠️ Website sử dụng cấu hình Firebase Hosting; một số tính năng hoạt động tốt nhất khi chạy qua Firebase.
+
+### Yêu cầu
 - [Node.js](https://nodejs.org/) v18+
 - [Firebase CLI](https://firebase.google.com/docs/cli): `npm install -g firebase-tools`
 
-### Run Locally
+### Chạy trên máy
 ```bash
-# Clone the repo
+# Tải mã nguồn dự án
 git clone https://github.com/Jishnu09-siuu/cafe-management-system.git
 cd cafe-management-system
 
-# Login to Firebase
+# Đăng nhập Firebase
 firebase login
 
-# Serve locally
+# Chạy website trên máy
 firebase serve --only hosting
 ```
 
-Open [http://localhost:5000](http://localhost:5000) in your browser.
+Mở [http://localhost:5000](http://localhost:5000) trong trình duyệt.
 
-### Deploy to Firebase
+### Triển khai lên Firebase
 ```bash
 firebase deploy --only hosting
 ```
 
 ---
 
-## 📄 License
+## 📄 Giấy phép
 
-This project is for personal/portfolio use. All café photos are from royalty-free sources.
+Dự án dành cho mục đích cá nhân và hồ sơ năng lực. Hình ảnh quán cà phê được lấy từ các nguồn miễn phí bản quyền.
 
 ---
 

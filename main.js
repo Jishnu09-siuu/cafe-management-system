@@ -727,7 +727,7 @@ function initTestimonials() {
       const dot = document.createElement('button');
       dot.className = 'testimonial-dot';
       dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.setAttribute('aria-label', `Chuyển đến mục ${i + 1}`);
       dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
       if (i === 0) dot.classList.add('active');
       dot.addEventListener('click', () => goTo(i * visible));
@@ -931,7 +931,7 @@ function initReservationForm() {
     if (submit) {
       submit.disabled = false;
       const btnText = submit.querySelector('.btn-text');
-      if (btnText) btnText.textContent = 'Confirm Reservation';
+      if (btnText) btnText.textContent = 'Xác nhận đặt bàn';
     }
   };
 
@@ -951,10 +951,10 @@ function initReservationForm() {
     const time  = document.getElementById('res-time');
 
     const fields = [
-      { el: name, label: 'Full Name' },
-      { el: email, label: 'Email Address' },
-      { el: date, label: 'Date' },
-      { el: time, label: 'Time' }
+      { el: name, label: 'Họ và tên' },
+      { el: email, label: 'Địa chỉ email' },
+      { el: date, label: 'Ngày' },
+      { el: time, label: 'Giờ' }
     ];
 
     const missingLabels = [];
@@ -966,13 +966,13 @@ function initReservationForm() {
     });
 
     if (missingLabels.length > 0) {
-      showValidationError(`Please complete all required fields: ${missingLabels.join(', ')}.`);
+      showValidationError(`Vui lòng điền đầy đủ các trường bắt buộc: ${missingLabels.join(', ')}.`);
       return;
     }
 
     // Submit state UI (prevent duplicate submission)
     const btnText = submit ? submit.querySelector('.btn-text') : null;
-    if (btnText) btnText.textContent = 'Processing…';
+    if (btnText) btnText.textContent = 'Đang xử lý…';
     if (submit) submit.disabled = true;
 
     const resId = 'RES-' + Math.floor(100000 + Math.random() * 900000);
@@ -989,7 +989,7 @@ function initReservationForm() {
       guests: parseInt(document.getElementById('res-guests') ? document.getElementById('res-guests').value : '2', 10) || 2,
       specialRequest: document.getElementById('res-notes') ? document.getElementById('res-notes').value.trim() : '',
       notes: document.getElementById('res-notes') ? document.getElementById('res-notes').value.trim() : '',
-      status: 'Pending',
+      status: 'pending',
       emailStatus: 'Pending',
       createdAt: nowIso,
       updatedAt: nowIso
@@ -1014,26 +1014,20 @@ function initReservationForm() {
           docRef.update({ reservationId: firestoreDocId }).catch(() => {});
         }
         sendEmailJS(reservationData, 'confirmation', firestoreDocId);
-        showToast('Reservation created! Confirmation email on its way.', 'success');
+        showToast('Đã tạo yêu cầu đặt bàn! Email xác nhận đang được gửi đến bạn.', 'success');
         showSuccessView();
         openSuccessModal(reservationData);
       }).catch((error) => {
-        console.warn('Firestore sync notice (saved in local backup):', error);
-        sendEmailJS(reservationData, 'confirmation', null);
-        showToast('Reservation saved! Email being dispatched.', 'info');
-        showSuccessView();
-        openSuccessModal(reservationData);
+        console.warn('Firestore reservation write failed:', error);
+        showToast('Không thể lưu yêu cầu lên hệ thống nên chưa ghi nhận đặt bàn. Vui lòng thử lại hoặc liên hệ quán.', 'error');
       }).finally(() => {
         if (submit) submit.disabled = false;
-        if (btnText) btnText.textContent = 'Confirm Reservation';
+        if (btnText) btnText.textContent = 'Xác nhận đặt bàn';
       });
     } else {
-      sendEmailJS(reservationData, 'confirmation', null);
-      showToast('Reservation saved! Email being dispatched.', 'info');
-      showSuccessView();
-      openSuccessModal(reservationData);
+      showToast('Chưa gửi được yêu cầu: không kết nối được Firestore. Vui lòng thử lại khi có mạng.', 'error');
       if (submit) submit.disabled = false;
-      if (btnText) btnText.textContent = 'Confirm Reservation';
+      if (btnText) btnText.textContent = 'Xác nhận đặt bàn';
     }
   });
 }
@@ -1055,27 +1049,27 @@ function sendEmailJS(res, type, docId, customBody) {
   }
 
   const subjectMap = {
-    confirmation: 'Your Reservation Request — Mocha & Miso Café',
-    confirmed:    'Your Reservation is Confirmed — Mocha & Miso Café',
-    cancelled:    'Your Reservation Has Been Cancelled — Mocha & Miso Café',
-    custom:       'A Message from Mocha & Miso Café'
+    confirmation: 'Đã nhận yêu cầu đặt bàn — Mocha & Miso Café',
+    confirmed:    'Đặt bàn đã được xác nhận — Mocha & Miso Café',
+    cancelled:    'Đặt bàn đã bị hủy — Mocha & Miso Café',
+    custom:       'Tin nhắn từ Mocha & Miso Café'
   };
 
   const bodyMap = {
-    confirmation: 'Thank you for choosing Mocha & Miso Craft Café! We have received your reservation request and will confirm it shortly.',
-    confirmed:    'Great news! Your reservation has been confirmed by our team. We can\'t wait to welcome you!',
-    cancelled:    'We\'re sorry to let you know that your reservation has been cancelled. Please contact us to reschedule.',
+    confirmation: 'Cảm ơn bạn đã chọn Mocha & Miso! Chúng tôi đã nhận yêu cầu đặt bàn và sẽ sớm xác nhận.',
+    confirmed:    'Tin vui! Đội ngũ của chúng tôi đã xác nhận đặt bàn. Rất mong được đón tiếp bạn!',
+    cancelled:    'Rất tiếc, yêu cầu đặt bàn của bạn đã bị hủy. Vui lòng liên hệ với chúng tôi nếu bạn muốn đặt lại.',
     custom:       customBody || ''
   };
 
   const templateParams = {
     to_email:        res.email || '',
-    customer_name:   res.customerName || res.name || 'Valued Guest',
+    customer_name:   res.customerName || res.name || 'Quý khách',
     reservation_id:  res.reservationId || res.id || 'N/A',
     date:            res.date || 'TBD',
     time:            formatTime(res.time) || res.time || 'TBD',
     guests:          String(res.guests || 2),
-    special_request: res.specialRequest || res.notes || 'None',
+    special_request: res.specialRequest || res.notes || 'Không có',
     subject:         subjectMap[type] || subjectMap.confirmation,
     message_body:    bodyMap[type] || bodyMap.confirmation,
     cafe_address:    '124 Artisan Alley, Craft District',
@@ -1111,15 +1105,14 @@ window.sendEmailJS = sendEmailJS;
 // Global Helper Functions for Modal & Toast Notifications
 function formatTime(timeStr) {
   if (!timeStr) return '';
-  if (timeStr.includes(':')) return timeStr;
-  if (timeStr.length === 4) {
-    let hours = parseInt(timeStr.substring(0, 2), 10);
-    const mins = timeStr.substring(2);
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12 || 12;
-    return `${hours}:${mins} ${ampm}`;
-  }
-  return timeStr;
+  const [hourText, minuteText] = timeStr.includes(':')
+    ? timeStr.split(':')
+    : [timeStr.substring(0, 2), timeStr.substring(2)];
+  const hours = Number.parseInt(hourText, 10);
+  if (!Number.isFinite(hours) || !/^\d{2}$/.test(minuteText)) return timeStr;
+
+  const period = hours < 11 ? 'sáng' : hours < 13 ? 'trưa' : hours < 18 ? 'chiều' : 'tối';
+  return `${hours % 12 || 12}:${minuteText} ${period}`;
 }
 
 function escapeHtml(str) {
@@ -1168,10 +1161,10 @@ function openSuccessModal(res) {
   const guestsEl = document.getElementById('modal-res-guests');
 
   if (resIdEl) resIdEl.textContent = res.reservationId || res.id || 'CONFIRMED';
-  if (nameEl) nameEl.textContent = res.customerName || res.name || 'Valued Guest';
-  if (dateEl) dateEl.textContent = res.date || 'Today';
+  if (nameEl) nameEl.textContent = res.customerName || res.name || 'Quý khách';
+  if (dateEl) dateEl.textContent = res.date || 'Hôm nay';
   if (timeEl) timeEl.textContent = formatTime(res.time) || res.time || '';
-  if (guestsEl) guestsEl.textContent = `${res.guests || 2} ${res.guests === 1 ? 'Guest' : 'Guests'}`;
+  if (guestsEl) guestsEl.textContent = `${res.guests || 2} khách`;
 
   modal.hidden = false;
   modal.setAttribute('aria-hidden', 'false');

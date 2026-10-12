@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Portal — Mocha & Miso Craft Café</title>
+  <title>Cổng quản trị — Mocha & Miso</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/jpeg" href="asstes/logo_icon.jpg" />
 
@@ -35,27 +35,28 @@
     <div class="admin-login-card">
       <div class="admin-brand-header">
         <img src="asstes/logo_icon.jpg" alt="Mocha & Miso" class="admin-brand-logo" />
-        <h1 class="admin-brand-title">Admin Portal</h1>
-        <p class="admin-brand-sub">Mocha &amp; Miso Craft Café</p>
+        <h1 class="admin-brand-title">Cổng quản trị</h1>
+        <p class="admin-brand-sub">Mocha &amp; Miso · Cà phê thủ công</p>
       </div>
 
       <form class="reservation-form" id="admin-login-form" novalidate>
         <div class="form-group">
           <input type="email" id="admin-email" class="form-input" placeholder=" " required autocomplete="username" />
-          <label for="admin-email" class="form-label form-label--up">Admin Email</label>
+          <label for="admin-email" class="form-label form-label--up">Email quản trị</label>
           <span class="form-line"></span>
         </div>
 
         <div class="form-group">
           <input type="password" id="admin-password" class="form-input" placeholder=" " required
             autocomplete="current-password" />
-          <label for="admin-password" class="form-label form-label--up">Password</label>
+          <label for="admin-password" class="form-label form-label--up">Mật khẩu</label>
           <span class="form-line"></span>
         </div>
 
         <button type="submit" class="btn btn-primary btn-full" id="admin-login-submit">
-          <span class="btn-text">Log In to Portal</span>
+          <span class="btn-text">Đăng nhập</span>
         </button>
+        <button type="button" class="admin-forgot-password" id="admin-forgot-password">Quên mật khẩu?</button>
       </form>
     </div>
   </section>
@@ -70,11 +71,11 @@
       <div class="container admin-header-inner">
         <div class="admin-logo-group">
           <h2 class="admin-header-title">Mocha &amp; Miso</h2>
-          <span class="admin-badge">Admin Dashboard</span>
+          <span class="admin-badge">Bảng điều khiển quản trị</span>
         </div>
         <div class="admin-user-info">
-          <span class="admin-email-text" id="logged-admin-email">rickmondal598@gmail.com</span>
-          <button type="button" class="btn-logout" id="admin-logout-btn">Log Out</button>
+          <span class="admin-email-text" id="logged-admin-email">lehwangduong@gmail.com</span>
+          <button type="button" class="btn-logout" id="admin-logout-btn">Đăng xuất</button>
         </div>
       </div>
     </header>
@@ -86,7 +87,7 @@
       <div class="admin-stats-grid">
         <div class="stat-card">
           <div class="stat-header">
-            <span class="stat-label">Total Reservations</span>
+            <span class="stat-label">Tổng lượt đặt bàn</span>
             <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zM16 2v4M8 2v4M3 10h18" />
             </svg>
@@ -96,7 +97,7 @@
 
         <div class="stat-card">
           <div class="stat-header">
-            <span class="stat-label">Pending Approval</span>
+            <span class="stat-label">Chờ xác nhận</span>
             <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
@@ -107,7 +108,7 @@
 
         <div class="stat-card">
           <div class="stat-header">
-            <span class="stat-label">Confirmed Bookings</span>
+            <span class="stat-label">Đặt bàn đã xác nhận</span>
             <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
               <polyline points="22 4 12 14.01 9 11.01" />
@@ -118,7 +119,7 @@
 
         <div class="stat-card">
           <div class="stat-header">
-            <span class="stat-label">Total Guests Count</span>
+            <span class="stat-label">Tổng số khách</span>
             <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
               <circle cx="9" cy="7" r="4" />
@@ -133,14 +134,14 @@
       <!-- Controls: Filter Tabs & Search -->
       <div class="admin-controls-bar">
         <div class="admin-filter-group" role="tablist">
-          <button type="button" class="admin-filter-tab active" data-filter="all">All Bookings</button>
-          <button type="button" class="admin-filter-tab" data-filter="pending">Pending</button>
-          <button type="button" class="admin-filter-tab" data-filter="confirmed">Confirmed</button>
-          <button type="button" class="admin-filter-tab" data-filter="cancelled">Cancelled</button>
+          <button type="button" class="admin-filter-tab active" data-filter="all">Tất cả đặt bàn</button>
+          <button type="button" class="admin-filter-tab" data-filter="pending">Đang chờ</button>
+          <button type="button" class="admin-filter-tab" data-filter="confirmed">Đã xác nhận</button>
+          <button type="button" class="admin-filter-tab" data-filter="cancelled">Đã hủy</button>
         </div>
 
         <input type="text" id="admin-search" class="admin-search-input"
-          placeholder="Search by guest name, email or phone..." />
+          placeholder="Tìm theo tên, email hoặc số điện thoại..." />
       </div>
 
       <!-- Table Container -->
@@ -149,25 +150,57 @@
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Guest Details</th>
-                <th>Date &amp; Time</th>
-                <th>Guests</th>
-                <th>Special Notes</th>
-                <th>Status</th>
-                <th>Email Status</th>
-                <th>Actions</th>
+                <th>Thông tin khách</th>
+                <th>Ngày và giờ</th>
+                <th>Số khách</th>
+                <th>Ghi chú</th>
+                <th>Trạng thái</th>
+                <th>Tình trạng email</th>
+                <th>Thao tác</th>
               </tr>
             </thead>
             <tbody id="bookings-tbody">
               <tr>
                 <td colspan="7" style="text-align:center; padding: 40px; color: var(--warm-gray);">
-                  Loading reservations...
+                  Đang tải danh sách đặt bàn...
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+
+      <section class="admin-orders-section" aria-labelledby="orders-heading">
+        <div class="admin-section-heading">
+          <div>
+            <span class="admin-section-kicker">Bếp và phục vụ</span>
+            <h2 id="orders-heading">Đơn gọi món theo bàn</h2>
+          </div>
+          <div class="admin-section-actions">
+            <a class="admin-qr-link" href="qr.html" target="_blank" rel="noopener">Tạo QR bàn</a>
+            <span class="admin-live-indicator">Đang cập nhật trực tiếp</span>
+          </div>
+        </div>
+        <div class="admin-table-card">
+          <div class="admin-table-wrap">
+            <table class="admin-table admin-orders-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn / Bàn</th>
+                  <th>Món đã gọi</th>
+                  <th>Tổng tiền</th>
+                  <th>Trạng thái</th>
+                  <th>Thanh toán</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="orders-tbody">
+                <tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--warm-gray);">Đang tải đơn gọi món...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
     </main>
   </div>
@@ -177,29 +210,29 @@
   <!-- ============================================================ -->
   <div class="admin-modal-overlay" id="reply-modal" hidden>
     <div class="admin-modal-card">
-      <h3 class="admin-modal-title">Reply to Guest</h3>
+      <h3 class="admin-modal-title">Gửi email cho khách</h3>
 
       <div class="form-group" style="margin-bottom: 20px;">
         <input type="email" id="modal-guest-email" class="form-input" readonly />
-        <label for="modal-guest-email" class="form-label form-label--up">To (Guest Email)</label>
+        <label for="modal-guest-email" class="form-label form-label--up">Người nhận (email khách)</label>
       </div>
 
       <div class="form-group" style="margin-bottom: 20px;">
-        <input type="text" id="modal-subject" class="form-input" value="Your Reservation at Mocha & Miso Café" />
-        <label for="modal-subject" class="form-label form-label--up">Subject</label>
+        <input type="text" id="modal-subject" class="form-input" value="Thông tin đặt bàn tại Mocha & Miso Café" />
+        <label for="modal-subject" class="form-label form-label--up">Tiêu đề</label>
       </div>
 
       <div class="form-group" style="margin-bottom: 20px;">
         <textarea id="modal-message" class="form-input form-textarea" rows="5"
-          placeholder="Write your message to the guest..."></textarea>
-        <label for="modal-message" class="form-label form-label--up">Message</label>
+          placeholder="Soạn nội dung gửi khách..."></textarea>
+        <label for="modal-message" class="form-label form-label--up">Nội dung</label>
       </div>
 
       <div class="admin-modal-actions">
         <button type="button" class="btn btn-outline" id="modal-cancel-btn"
-          style="font-size: 13px; padding: 8px 18px;">Close</button>
+          style="font-size: 13px; padding: 8px 18px;">Đóng</button>
         <button type="button" class="btn btn-primary" id="modal-send-btn"
-          style="font-size: 13px; padding: 8px 18px;">Send Email</button>
+          style="font-size: 13px; padding: 8px 18px;">Gửi email</button>
       </div>
     </div>
   </div>
@@ -222,7 +255,7 @@
   </script>
 
   <!-- Scripts -->
-  <script src="firebase.js" defer></script>
+  <script src="firebase.js?v=2" defer></script>
   <script src="main.js" defer></script>
   <script src="admin.js" defer></script>
 </body>

@@ -2501,6 +2501,109 @@ img, video, svg, iframe {
   margin-top: 24px;
 }
 
+.admin-orders-section {
+  margin-top: 64px;
+}
+
+.admin-forgot-password {
+  display: block;
+  margin: 14px auto 0;
+  border: 0;
+  padding: 4px;
+  background: transparent;
+  color: var(--coffee-mid);
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.admin-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.admin-section-heading h2 {
+  margin: 0;
+  color: var(--bark);
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.admin-section-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--coffee-mid);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.admin-live-indicator {
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-section-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-qr-link {
+  color: var(--coffee);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.admin-orders-table td {
+  min-width: 120px;
+}
+
+.order-table-number {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--coffee-mid);
+  font-size: 13px;
+}
+
+.order-note {
+  display: block;
+  margin-top: 8px;
+  color: var(--coffee-mid);
+  font-style: italic;
+}
+
+.order-status,
+.payment-status {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.order-status--new { color: #8b5e24; background: #f5e5c5; }
+.order-status--preparing { color: #5a4d8b; background: #e8e3f5; }
+.order-status--served { color: #286a59; background: #dceee7; }
+.order-status--completed { color: #35634a; background: #dcebdc; }
+.order-status--cancelled { color: #9b473e; background: #f5deda; }
+.payment-status--unpaid { color: #9b473e; background: #f5deda; }
+.payment-status--paid { color: #35634a; background: #dcebdc; }
+.order-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+
+@media (max-width: 700px) {
+  .admin-section-heading { align-items: flex-start; flex-direction: column; }
+}
+
 /* ----------------------------------------------------------------
    SUCCESS CONFIRMATION MODAL & TOASTS
    ---------------------------------------------------------------- */

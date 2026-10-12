@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mocha & Miso — A Craft Café Experience</title>
-  <meta name="description" content="Mocha & Miso is a premium Japandi-inspired craft café in the heart of the city. Handcrafted coffee, seasonal menus, and a warm atmosphere designed for slow mornings." />
-  <meta name="keywords" content="premium café, craft coffee, Japandi café, specialty coffee, café restaurant, artisan café" />
-  <meta property="og:title" content="Mocha & Miso — A Craft Café Experience" />
-  <meta property="og:description" content="Step into warmth. Premium coffee, handcrafted food, and a space designed for slow moments." />
+  <title>Mocha & Miso — Hương vị cà phê thủ công</title>
+  <meta name="description" content="Mocha & Miso là quán cà phê thủ công mang cảm hứng Japandi. Thưởng thức cà phê pha chế tỉ mỉ, món ăn theo mùa và không gian ấm áp cho những buổi sáng chậm rãi." />
+  <meta name="keywords" content="quán cà phê, cà phê thủ công, cà phê đặc sản, quán cà phê Japandi, đồ ăn theo mùa" />
+  <meta property="og:title" content="Mocha & Miso — Hương vị cà phê thủ công" />
+  <meta property="og:description" content="Ghé vào không gian ấm áp, thưởng thức cà phê và món ăn thủ công, tận hưởng những phút giây thong thả." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="asstes/logo.jpg" />
-
   <!-- Favicon / Website Link Logo -->
   <link rel="icon" type="image/jpeg" href="asstes/logo_icon.jpg" />
   <link rel="shortcut icon" href="asstes/logo_icon.jpg" type="image/jpeg" />
@@ -58,14 +57,14 @@
   <!-- ============================================================ -->
   <!-- PAGE LOADER -->
   <!-- ============================================================ -->
-  <div class="loader" id="loader" role="status" aria-label="Loading">
+  <div class="loader" id="loader" role="status" aria-label="Đang tải">
     <div class="loader-inner">
       <svg class="loader-logo" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="40" cy="40" r="36" stroke="#5A3E36" stroke-width="1.5"/>
         <path d="M24 44 Q40 28 56 44" stroke="#5A3E36" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       </svg>
       <div class="loader-progress-bar"><span id="loader-fill"></span></div>
-      <p class="loader-text">Brewing something special…</p>
+      <p class="loader-text">Đang chuẩn bị điều đặc biệt…</p>
     </div>
   </div>
 
@@ -73,43 +72,43 @@
   <!-- NAVIGATION -->
   <!-- ============================================================ -->
   <header class="nav" id="navbar" role="banner">
-    <nav class="nav-inner container" aria-label="Main navigation">
-      <a href="#hero" class="nav-logo" id="nav-logo-link" aria-label="Mocha & Miso — Home">
+    <nav class="nav-inner container" aria-label="Điều hướng chính">
+      <a href="#hero" class="nav-logo" id="nav-logo-link" aria-label="Mocha & Miso — Trang chủ">
         <div class="nav-logo-img-wrap">
-          <img src="asstes/logo_icon.jpg" alt="Mocha and Miso café logo" class="nav-logo-img" />
+          <img src="asstes/logo_icon.jpg" alt="Logo quán cà phê Mocha & Miso" class="nav-logo-img" />
         </div>
         <div class="nav-logo-words">
           <span class="nav-logo-name">Mocha &amp; Miso</span>
-          <span class="nav-logo-sub">Craft Café</span>
+          <span class="nav-logo-sub">Cà phê thủ công</span>
         </div>
       </a>
 
       <ul class="nav-links" role="list">
-        <li><a href="#about" class="nav-link" data-section="about">Our Story</a></li>
-        <li><a href="#menu" class="nav-link" data-section="menu">Menu</a></li>
-        <li><a href="#gallery" class="nav-link" data-section="gallery">Gallery</a></li>
-        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
-        <li><a href="admin.html" target="_blank" class="nav-link" style="color: var(--coffee-light); font-weight: 500;">Admin</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">Câu chuyện</a></li>
+        <li><a href="#menu" class="nav-link" data-section="menu">Thực đơn</a></li>
+        <li><a href="#gallery" class="nav-link" data-section="gallery">Thư viện ảnh</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Liên hệ</a></li>
+        <li><a href="admin.html" target="_blank" class="nav-link" style="color: var(--coffee-light); font-weight: 500;">Quản trị</a></li>
       </ul>
 
-      <a href="#reservation" class="btn btn-nav" id="nav-reservation-btn">Reserve a Table</a>
+      <a href="#reservation" class="btn btn-nav" id="nav-reservation-btn">Đặt bàn</a>
 
       <!-- Hamburger (mobile) -->
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-      <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Điều hướng trên điện thoại">
+      <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Đóng menu">&times;</button>
       <ul class="mobile-links" role="list">
-        <li><a href="#about" class="mobile-link">Our Story</a></li>
-        <li><a href="#menu" class="mobile-link">Menu</a></li>
-        <li><a href="#signature" class="mobile-link">Signature</a></li>
-        <li><a href="#gallery" class="mobile-link">Gallery</a></li>
-        <li><a href="#reservation" class="mobile-link">Reserve</a></li>
-        <li><a href="#contact" class="mobile-link">Contact</a></li>
+        <li><a href="#about" class="mobile-link">Câu chuyện</a></li>
+        <li><a href="#menu" class="mobile-link">Thực đơn</a></li>
+        <li><a href="#signature" class="mobile-link">Món đặc sắc</a></li>
+        <li><a href="#gallery" class="mobile-link">Thư viện ảnh</a></li>
+        <li><a href="#reservation" class="mobile-link">Đặt bàn</a></li>
+        <li><a href="#contact" class="mobile-link">Liên hệ</a></li>
       </ul>
     </div>
   </header>
@@ -119,13 +118,13 @@
     <!-- ============================================================ -->
     <!-- 1. HERO SECTION -->
     <!-- ============================================================ -->
-    <section class="hero" id="hero" aria-label="Hero">
+    <section class="hero" id="hero" aria-label="Giới thiệu">
       <!-- Parallax image container -->
       <div class="hero-image-wrap" id="hero-img-wrap">
         <!-- IMAGE: Hero background — asstes/8088465-garden-7111101.jpg (warm garden café) -->
         <img
           src="asstes/8088465-garden-7111101.jpg"
-          alt="Mocha & Miso café — sunlit garden seating with natural wood and lush greenery"
+          alt="Quán cà phê Mocha & Miso — chỗ ngồi sân vườn ngập nắng, điểm xuyết gỗ tự nhiên và cây xanh"
           class="hero-image"
           id="hero-img"
           loading="eager"
@@ -145,23 +144,23 @@
 
       <!-- Hero content -->
       <div class="hero-content container">
-        <div class="hero-eyebrow reveal-text" data-split="chars">Est. 2019 · Craft Café</div>
+        <div class="hero-eyebrow reveal-text" data-split="chars">Thành lập năm 2019 · Cà phê thủ công</div>
         <h1 class="hero-title">
-          <span class="hero-title-line reveal-text" data-split="words">Where Every</span>
-          <span class="hero-title-line hero-title-italic reveal-text" data-split="words">Sip Tells</span>
-          <span class="hero-title-line reveal-text" data-split="words">a Story.</span>
+          <span class="hero-title-line reveal-text" data-split="words">Nơi mỗi</span>
+          <span class="hero-title-line hero-title-italic reveal-text" data-split="words">ngụm cà phê</span>
+          <span class="hero-title-line reveal-text" data-split="words">kể một câu chuyện.</span>
         </h1>
-        <p class="hero-tagline reveal-fade">Handcrafted coffee. Seasonal kitchen. A space made for slow mornings and good conversation.</p>
+        <p class="hero-tagline reveal-fade">Cà phê thủ công, món ngon theo mùa và không gian dành cho những buổi sáng thong thả cùng những câu chuyện thân tình.</p>
         <div class="hero-cta reveal-fade">
-          <a href="#menu" class="btn btn-primary magnetic" id="hero-cta-primary">Explore Our Menu</a>
-          <a href="#about" class="btn btn-ghost magnetic" id="hero-cta-ghost">Our Story</a>
+          <a href="#menu" class="btn btn-primary magnetic" id="hero-cta-primary">Khám phá thực đơn</a>
+          <a href="#about" class="btn btn-ghost magnetic" id="hero-cta-ghost">Câu chuyện của chúng tôi</a>
         </div>
       </div>
 
       <!-- Scroll indicator -->
-      <div class="scroll-indicator" id="scroll-indicator" aria-label="Scroll down">
+      <div class="scroll-indicator" id="scroll-indicator" aria-label="Cuộn xuống">
         <div class="scroll-line"><span class="scroll-line-inner"></span></div>
-        <span class="scroll-label">Scroll</span>
+        <span class="scroll-label">Cuộn xuống</span>
       </div>
     </section>
 
@@ -172,7 +171,7 @@
       <div class="container">
 
         <!-- Eyebrow label -->
-        <div class="section-label reveal-text" data-split="chars">— Our Story</div>
+        <div class="section-label reveal-text" data-split="chars">— Câu chuyện của chúng tôi</div>
 
         <div class="about-grid">
           <!-- Image side -->
@@ -181,7 +180,7 @@
               <!-- IMAGE: About section — asstes/hoahoa111-cafe-5972490.jpg (person reading in café) -->
               <img
                 src="asstes/hoahoa111-cafe-5972490.jpg"
-                alt="A guest reading at Mocha & Miso — warm wooden table, natural afternoon light"
+                alt="Khách đọc sách tại Mocha & Miso bên chiếc bàn gỗ ấm áp dưới nắng chiều dịu nhẹ"
                 class="about-img"
                 loading="lazy" decoding="async"
                 decoding="async"
@@ -189,32 +188,32 @@
             </div>
             <div class="about-accent-card reveal-up">
               <span class="accent-number">7+</span>
-              <span class="accent-label">Years of craft brewing</span>
+              <span class="accent-label">năm tận tâm pha chế</span>
             </div>
           </div>
 
           <!-- Text side -->
           <div class="about-text-col">
             <h2 class="section-heading reveal-text" id="about-heading" data-split="lines">
-              A café born from<br/><em>love and intention.</em>
+              Một quán cà phê bắt đầu từ<br/><em>tình yêu và sự trân trọng.</em>
             </h2>
             <div class="about-body">
               <p class="about-para reveal-up">
-                Mocha &amp; Miso began in 2019 with a simple belief: that a café should feel like a second home. We wanted warm light, honest food, and coffee that you actually remember.
+                Mocha &amp; Miso ra đời năm 2019 từ một niềm tin giản dị: quán cà phê nên mang lại cảm giác thân thuộc như ngôi nhà thứ hai. Chúng tôi muốn có ánh sáng ấm áp, món ăn tử tế và hương cà phê khiến bạn nhớ mãi.
               </p>
               <p class="about-para reveal-up">
-                Inspired by the quiet craftsmanship of Japanese coffee culture and the cosy sensibility of Scandinavian design, every corner of our space has been thought through — from the clay cups to the handwritten seasonal menu on the chalk board.
+                Lấy cảm hứng từ sự tinh tế lặng lẽ trong văn hóa cà phê Nhật Bản và nét ấm cúng của thiết kế Bắc Âu, từng góc nhỏ đều được chăm chút — từ những chiếc cốc đất nung đến thực đơn theo mùa viết tay trên bảng phấn.
               </p>
               <p class="about-para reveal-up">
-                We source our beans from small-batch farmers in Coorg and Vietnam, our produce from local organic growers, and our baked goods from our in-house kitchen that starts at 5am every morning.
+                Hạt cà phê được tuyển chọn từ những nông trại quy mô nhỏ ở Coorg và Việt Nam; nông sản đến từ các nhà vườn hữu cơ địa phương; bánh được làm tại bếp quán, bắt đầu từ 5 giờ mỗi sáng.
               </p>
             </div>
             <div class="about-values reveal-up">
-              <div class="value-item"><span class="value-icon" aria-hidden="true">◦</span> Single-Origin Beans</div>
-              <div class="value-item"><span class="value-icon" aria-hidden="true">◦</span> Seasonal Kitchen</div>
-              <div class="value-item"><span class="value-icon" aria-hidden="true">◦</span> Slow Mornings</div>
+              <div class="value-item"><span class="value-icon" aria-hidden="true">◦</span> Cà phê tuyển chọn theo vùng</div>
+              <div class="value-item"><span class="value-icon" aria-hidden="true">◦</span> Bếp theo mùa</div>
+              <div class="value-item"><span class="value-icon" aria-hidden="true">◦</span> Buổi sáng thong thả</div>
             </div>
-            <a href="#reservation" class="btn btn-primary magnetic reveal-up" id="about-cta">Book a Table</a>
+            <a href="#reservation" class="btn btn-primary magnetic reveal-up" id="about-cta">Đặt bàn</a>
           </div>
         </div>
 
@@ -222,11 +221,11 @@
         <div class="about-quote reveal-fade">
           <blockquote class="marquee-quote">
             <span class="marquee-inner">
-              <em>"The ritual of a morning coffee is sacred. We build our café around yours."</em>
+              <em>"Nghi thức thưởng thức cà phê buổi sáng thật đáng trân trọng. Chúng tôi tạo nên quán cà phê để đồng hành cùng bạn."</em>
               &nbsp;&nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp;&nbsp;
-              <em>"The ritual of a morning coffee is sacred. We build our café around yours."</em>
+              <em>"Nghi thức thưởng thức cà phê buổi sáng thật đáng trân trọng. Chúng tôi tạo nên quán cà phê để đồng hành cùng bạn."</em>
               &nbsp;&nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp;&nbsp;
-              <em>"The ritual of a morning coffee is sacred. We build our café around yours."</em>
+              <em>"Nghi thức thưởng thức cà phê buổi sáng thật đáng trân trọng. Chúng tôi tạo nên quán cà phê để đồng hành cùng bạn."</em>
               &nbsp;&nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
           </blockquote>
@@ -242,19 +241,19 @@
       <div class="container">
 
         <div class="section-header">
-          <div class="section-label reveal-text" data-split="chars">— Our Menu</div>
+          <div class="section-label reveal-text" data-split="chars">— Thực đơn</div>
           <h2 class="section-heading reveal-text" id="menu-heading" data-split="lines">
-            Crafted with<br/><em>intention & care.</em>
+            Được chuẩn bị bằng<br/><em>sự tận tâm và chu đáo.</em>
           </h2>
-          <p class="section-subtext reveal-up">Every item on our menu is seasonal, sourced locally, and prepared fresh each morning.</p>
+          <p class="section-subtext reveal-up">Món ăn theo mùa, nguyên liệu địa phương và luôn được chuẩn bị tươi mới mỗi sáng.</p>
         </div>
 
         <!-- Menu Category Tabs -->
         <div class="menu-tabs reveal-up" role="tablist" aria-label="Menu categories">
-          <button class="menu-tab active" data-filter="all" role="tab" aria-selected="true" id="tab-all">All</button>
-          <button class="menu-tab" data-filter="drinks" role="tab" aria-selected="false" id="tab-drinks">Drinks</button>
-          <button class="menu-tab" data-filter="food" role="tab" aria-selected="false" id="tab-food">Food</button>
-          <button class="menu-tab" data-filter="desserts" role="tab" aria-selected="false" id="tab-desserts">Desserts</button>
+          <button class="menu-tab active" data-filter="all" role="tab" aria-selected="true" id="tab-all">Tất cả</button>
+          <button class="menu-tab" data-filter="drinks" role="tab" aria-selected="false" id="tab-drinks">Đồ uống</button>
+          <button class="menu-tab" data-filter="food" role="tab" aria-selected="false" id="tab-food">Món ăn</button>
+          <button class="menu-tab" data-filter="desserts" role="tab" aria-selected="false" id="tab-desserts">Tráng miệng</button>
         </div>
 
         <!-- Menu Grid -->
@@ -264,16 +263,16 @@
           <article class="menu-card magnetic-card" data-category="drinks" data-index="0">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_espresso.jpg -->
-              <img src="asstes/menu_espresso.jpg" alt="Rich single-origin espresso shot" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_espresso.jpg" alt="Tách espresso đậm vị từ hạt cà phê tuyển chọn" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Espresso</span>
-                <span class="menu-card-price">₹180</span>
+                <span class="menu-card-category">Cà phê espresso</span>
+                <span class="menu-card-price">180.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Single Origin Espresso</h3>
-              <p class="menu-card-desc">Dark cherry, raw cacao & a finish of caramel. Our house espresso from Coorg highlands.</p>
+              <h3 class="menu-card-title">Espresso hạt tuyển chọn</h3>
+              <p class="menu-card-desc">Hương anh đào đen, cacao nguyên chất và hậu vị caramel. Espresso đặc trưng từ cao nguyên Coorg.</p>
             </div>
           </article>
 
@@ -281,16 +280,16 @@
           <article class="menu-card magnetic-card" data-category="drinks" data-index="1">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_cappuccino.jpg -->
-              <img src="asstes/menu_cappuccino.jpg" alt="Hand-poured cappuccino with rosetta latte art" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_cappuccino.jpg" alt="Cappuccino rót thủ công với hình latte art hoa hồng" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Espresso</span>
-                <span class="menu-card-price">₹240</span>
+                <span class="menu-card-category">Cà phê espresso</span>
+                <span class="menu-card-price">240.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Velvet Cappuccino</h3>
-              <p class="menu-card-desc">Double shot, steamed Nilgiri milk, hand-poured rosetta art. The benchmark of craft coffee.</p>
+              <h3 class="menu-card-title">Cappuccino mịn màng</h3>
+              <p class="menu-card-desc">Hai shot espresso, sữa Nilgiri nóng mịn và hình hoa hồng được rót thủ công. Chuẩn mực của cà phê pha chế.</p>
             </div>
           </article>
 
@@ -298,16 +297,16 @@
           <article class="menu-card magnetic-card" data-category="drinks" data-index="2">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_coldbrew.jpg -->
-              <img src="asstes/menu_coldbrew.jpg" alt="Slow-drip cold brew over ice" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_coldbrew.jpg" alt="Cà phê ủ lạnh nhỏ giọt chậm dùng cùng đá" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Cold Coffee</span>
-                <span class="menu-card-price">₹280</span>
+                <span class="menu-card-category">Cà phê ủ lạnh</span>
+                <span class="menu-card-price">280.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">18-Hour Cold Brew</h3>
-              <p class="menu-card-desc">Slow-steeped for 18 hours. Velvety smooth, naturally sweet, with hints of dark chocolate.</p>
+              <h3 class="menu-card-title">Cold brew ủ 18 giờ</h3>
+              <p class="menu-card-desc">Ủ lạnh chậm trong 18 giờ, mượt mà, ngọt dịu tự nhiên cùng hương sô-cô-la đen thoang thoảng.</p>
             </div>
           </article>
 
@@ -315,16 +314,16 @@
           <article class="menu-card magnetic-card" data-category="drinks" data-index="3">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_matcha.jpg -->
-              <img src="asstes/menu_matcha.jpg" alt="Ceremonial grade matcha latte" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_matcha.jpg" alt="Matcha latte hảo hạng dùng trong nghi thức trà" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Specialty</span>
-                <span class="menu-card-price">₹300</span>
+                <span class="menu-card-category">Đồ uống đặc biệt</span>
+                <span class="menu-card-price">300.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Ceremonial Matcha Latte</h3>
-              <p class="menu-card-desc">Uji ceremonial grade matcha whisked with oat milk. Earthy, grassy, and beautifully balanced.</p>
+              <h3 class="menu-card-title">Matcha latte Uji</h3>
+              <p class="menu-card-desc">Matcha Uji hảo hạng đánh cùng sữa yến mạch, vị thanh mộc mạc và cân bằng tinh tế.</p>
             </div>
           </article>
 
@@ -332,16 +331,16 @@
           <article class="menu-card magnetic-card" data-category="drinks" data-index="4">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_icedmocha.jpg -->
-              <img src="asstes/menu_icedmocha.jpg" alt="Iced mocha with whipped cream" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_icedmocha.jpg" alt="Mocha đá phủ kem tươi" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Cold Coffee</span>
-                <span class="menu-card-price">₹320</span>
+                <span class="menu-card-category">Cà phê ủ lạnh</span>
+                <span class="menu-card-price">320.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Dark Iced Mocha</h3>
-              <p class="menu-card-desc">House espresso, dark cocoa syrup, cold milk, and a cloud of lightly sweetened cream.</p>
+              <h3 class="menu-card-title">Mocha đá cacao đậm</h3>
+              <p class="menu-card-desc">Espresso đặc trưng, si-rô cacao đen, sữa lạnh và lớp kem tươi ngọt nhẹ bồng bềnh.</p>
             </div>
           </article>
 
@@ -349,16 +348,16 @@
           <article class="menu-card magnetic-card" data-category="food" data-index="5">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_croissant.jpg -->
-              <img src="asstes/menu_croissant.jpg" alt="Freshly baked butter croissant" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_croissant.jpg" alt="Bánh croissant bơ mới nướng" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Bakery</span>
-                <span class="menu-card-price">₹220</span>
+                <span class="menu-card-category">Bánh nướng</span>
+                <span class="menu-card-price">220.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Laminated Butter Croissant</h3>
-              <p class="menu-card-desc">72-layer French butter croissant baked in-house at 5am. Served warm with house jam.</p>
+              <h3 class="menu-card-title">Croissant bơ ngàn lớp</h3>
+              <p class="menu-card-desc">Croissant bơ kiểu Pháp 72 lớp, nướng tại quán từ 5 giờ sáng và dùng nóng cùng mứt nhà làm.</p>
             </div>
           </article>
 
@@ -366,16 +365,16 @@
           <article class="menu-card magnetic-card" data-category="food" data-index="6">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_pancakes.jpg -->
-              <img src="asstes/menu_pancakes.jpg" alt="Fluffy Japanese soufflé pancakes" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_pancakes.jpg" alt="Bánh pancake soufflé Nhật Bản mềm xốp" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Breakfast</span>
-                <span class="menu-card-price">₹380</span>
+                <span class="menu-card-category">Bữa sáng</span>
+                <span class="menu-card-price">380.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Soufflé Pancake Stack</h3>
-              <p class="menu-card-desc">Japanese-style cloud pancakes with seasonal berries, whipped mascarpone, and maple syrup.</p>
+              <h3 class="menu-card-title">Pancake soufflé bông xốp</h3>
+              <p class="menu-card-desc">Pancake mềm nhẹ kiểu Nhật ăn kèm quả mọng theo mùa, kem mascarpone đánh bông và si-rô lá phong.</p>
             </div>
           </article>
 
@@ -383,16 +382,16 @@
           <article class="menu-card magnetic-card" data-category="food" data-index="7">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_sandwich.jpg -->
-              <img src="asstes/menu_sandwich.jpg" alt="Gourmet chicken club sandwich" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_sandwich.jpg" alt="Bánh mì kẹp gà kiểu club đặc biệt" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Mains</span>
-                <span class="menu-card-price">₹450</span>
+                <span class="menu-card-category">Món chính</span>
+                <span class="menu-card-price">450.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Smoked Chicken Brioche</h3>
-              <p class="menu-card-desc">Slow-smoked chicken thigh, avocado, heirloom tomato, and truffle aioli on a house brioche.</p>
+              <h3 class="menu-card-title">Brioche gà hun khói</h3>
+              <p class="menu-card-desc">Đùi gà hun khói chậm, bơ quả, cà chua gia truyền và sốt aioli nấm truffle kẹp trong bánh brioche nhà làm.</p>
             </div>
           </article>
 
@@ -400,16 +399,16 @@
           <article class="menu-card magnetic-card" data-category="desserts" data-index="8">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_cheesecake.jpg -->
-              <img src="asstes/menu_cheesecake.jpg" alt="Basque burnt cheesecake slice" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_cheesecake.jpg" alt="Miếng bánh cheesecake cháy kiểu Basque" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Desserts</span>
-                <span class="menu-card-price">₹340</span>
+                <span class="menu-card-category">Tráng miệng</span>
+                <span class="menu-card-price">340.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Basque Burnt Cheesecake</h3>
-              <p class="menu-card-desc">Classic San Sebastián-style cheesecake — caramelised top, silky centre, berry coulis.</p>
+              <h3 class="menu-card-title">Cheesecake cháy kiểu Basque</h3>
+              <p class="menu-card-desc">Cheesecake phong cách San Sebastián cổ điển với mặt bánh caramel, ruột mềm mượt và xốt quả mọng.</p>
             </div>
           </article>
 
@@ -417,16 +416,16 @@
           <article class="menu-card magnetic-card" data-category="food" data-index="9">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/matteophotopro2020-mussels-5342679_1920.jpg (seafood pasta) -->
-              <img src="asstes/matteophotopro2020-mussels-5342679_1920.jpg" alt="Seafood linguine with mussels and prawns" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/matteophotopro2020-mussels-5342679_1920.jpg" alt="Mì linguine hải sản với vẹm và tôm" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Mains</span>
-                <span class="menu-card-price">₹620</span>
+                <span class="menu-card-category">Món chính</span>
+                <span class="menu-card-price">620.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Coastal Seafood Linguine</h3>
-              <p class="menu-card-desc">Fresh mussels, tiger prawns, clams, and scallops in a saffron-white wine bisque with house pasta.</p>
+              <h3 class="menu-card-title">Linguine hải sản miền biển</h3>
+              <p class="menu-card-desc">Vẹm tươi, tôm sú, nghêu và sò điệp trong xốt kem nghệ tây vang trắng cùng mì nhà làm.</p>
             </div>
           </article>
 
@@ -434,16 +433,16 @@
           <article class="menu-card magnetic-card" data-category="drinks" data-index="10">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_rosecoldbrew.png -->
-              <img src="asstes/menu_rosecoldbrew.png" alt="Rose Cardamom Cold Brew with orange twist" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_rosecoldbrew.png" alt="Cà phê ủ lạnh hoa hồng bạch đậu khấu điểm chút cam" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Cold Coffee</span>
-                <span class="menu-card-price">₹310</span>
+                <span class="menu-card-category">Cà phê ủ lạnh</span>
+                <span class="menu-card-price">310.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Rose Cardamom Cold Brew</h3>
-              <p class="menu-card-desc">Single-origin Ethiopian Yirgacheffe slow-dripped with rose water, cardamom &amp; fresh orange twist.</p>
+              <h3 class="menu-card-title">Cold brew hoa hồng bạch đậu khấu</h3>
+              <p class="menu-card-desc">Cà phê Ethiopia Yirgacheffe tuyển chọn, ủ lạnh nhỏ giọt cùng nước hoa hồng, bạch đậu khấu và lát cam tươi.</p>
             </div>
           </article>
 
@@ -451,16 +450,16 @@
           <article class="menu-card magnetic-card" data-category="food" data-index="11">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_avocadotoast.png -->
-              <img src="asstes/menu_avocadotoast.png" alt="Truffle avocado sourdough toast with poached egg" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_avocadotoast.png" alt="Bánh mì sourdough nướng kèm bơ quả, truffle và trứng chần" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Breakfast</span>
-                <span class="menu-card-price">₹390</span>
+                <span class="menu-card-category">Bữa sáng</span>
+                <span class="menu-card-price">390.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Truffle Avocado Sourdough</h3>
-              <p class="menu-card-desc">Sliced Hass avocado, poached organic eggs, microgreens, and black truffle drizzle on toasted sourdough.</p>
+              <h3 class="menu-card-title">Sourdough bơ quả nấm truffle</h3>
+              <p class="menu-card-desc">Bơ Hass thái lát, trứng hữu cơ chần, rau mầm và chút nấm truffle đen trên bánh sourdough nướng giòn.</p>
             </div>
           </article>
 
@@ -468,16 +467,16 @@
           <article class="menu-card magnetic-card" data-category="food" data-index="12">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_katsusando.png -->
-              <img src="asstes/menu_katsusando.png" alt="Crispy chicken katsu sandwich on Japanese milk bread" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_katsusando.png" alt="Bánh mì sữa Nhật kẹp gà katsu giòn rụm" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Mains</span>
-                <span class="menu-card-price">₹480</span>
+                <span class="menu-card-category">Món chính</span>
+                <span class="menu-card-price">480.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Crispy Chicken Katsu Sando</h3>
-              <p class="menu-card-desc">Panko-crusted chicken thigh, shredded cabbage, tonkatsu sauce &amp; Japanese mayo on soft milk bread.</p>
+              <h3 class="menu-card-title">Sandwich gà katsu giòn</h3>
+              <p class="menu-card-desc">Đùi gà áo vụn bánh mì panko, bắp cải thái sợi, xốt tonkatsu và mayonnaise Nhật trong bánh mì sữa mềm.</p>
             </div>
           </article>
 
@@ -485,16 +484,16 @@
           <article class="menu-card magnetic-card" data-category="desserts" data-index="13">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_matchaopera.png -->
-              <img src="asstes/menu_matchaopera.png" alt="Layered matcha opera cake with gold leaf" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_matchaopera.png" alt="Bánh opera matcha nhiều lớp phủ lá vàng" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Patisserie</span>
-                <span class="menu-card-price">₹360</span>
+                <span class="menu-card-category">Bánh ngọt</span>
+                <span class="menu-card-price">360.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Matcha Gold Opera Cake</h3>
-              <p class="menu-card-desc">Decadent almond sponge, Uji matcha buttercream, and dark chocolate ganache topped with gold leaf.</p>
+              <h3 class="menu-card-title">Bánh opera matcha lá vàng</h3>
+              <p class="menu-card-desc">Cốt bánh hạnh nhân mềm xốp, kem bơ matcha Uji, ganache sô-cô-la đen và điểm lá vàng.</p>
             </div>
           </article>
 
@@ -502,23 +501,23 @@
           <article class="menu-card magnetic-card" data-category="desserts" data-index="14">
             <div class="menu-card-image-wrap">
               <!-- IMAGE: asstes/menu_raspberrytart.png -->
-              <img src="asstes/menu_raspberrytart.png" alt="Pistachio and fresh raspberry tart" class="menu-card-img" loading="lazy" decoding="async" />
-              <div class="menu-card-overlay"><span class="menu-card-view">View</span></div>
+              <img src="asstes/menu_raspberrytart.png" alt="Bánh tart hồ trăn và quả mâm xôi tươi" class="menu-card-img" loading="lazy" decoding="async" />
+              <div class="menu-card-overlay"><span class="menu-card-view">Xem món</span></div>
             </div>
             <div class="menu-card-body">
               <div class="menu-card-top">
-                <span class="menu-card-category">Pastry</span>
-                <span class="menu-card-price">₹370</span>
+                <span class="menu-card-category">Bánh ngọt</span>
+                <span class="menu-card-price">370.000 ₫</span>
               </div>
-              <h3 class="menu-card-title">Pistachio Raspberry Tart</h3>
-              <p class="menu-card-desc">Crisp pastry crust filled with rich pistachio frangipane, fresh raspberries &amp; vanilla bean cream.</p>
+              <h3 class="menu-card-title">Tart hồ trăn mâm xôi</h3>
+              <p class="menu-card-desc">Đế bánh giòn với nhân frangipane hồ trăn béo thơm, mâm xôi tươi và kem vani nguyên chất.</p>
             </div>
           </article>
 
         </div>
 
         <div class="menu-footer reveal-up">
-          <a href="#reservation" class="btn btn-primary magnetic" id="menu-cta">Book for Dine-In</a>
+          <a href="#reservation" class="btn btn-primary magnetic" id="menu-cta">Đặt bàn dùng tại quán</a>
         </div>
 
       </div>
@@ -529,9 +528,9 @@
     <!-- ============================================================ -->
     <section class="signature" id="signature" aria-labelledby="signature-heading">
       <div class="container">
-        <div class="section-label reveal-text" data-split="chars">— Signatures</div>
+        <div class="section-label reveal-text" data-split="chars">— Món đặc sắc</div>
         <h2 class="section-heading reveal-text" id="signature-heading" data-split="lines">
-          Dishes that<br/><em>define us.</em>
+          Hương vị làm nên<br/><em>chất riêng của chúng tôi.</em>
         </h2>
       </div>
 
@@ -539,15 +538,15 @@
       <div class="signature-item signature-item--normal">
         <div class="signature-image-wrap clip-reveal">
           <!-- IMAGE: asstes/bbom100892-cafe-7454951.jpg (espresso machine) -->
-          <img src="asstes/bbom100892-cafe-7454951.jpg" alt="Our vintage espresso bar — the heart of Mocha & Miso" class="signature-img" loading="lazy" decoding="async" />
+          <img src="asstes/bbom100892-cafe-7454951.jpg" alt="Quầy espresso cổ điển — trái tim của Mocha & Miso" class="signature-img" loading="lazy" decoding="async" />
         </div>
         <div class="signature-content reveal-up">
           <span class="signature-number" aria-hidden="true">01</span>
-          <h3 class="signature-title">The Perfect Espresso</h3>
+          <h3 class="signature-title">Một tách espresso hoàn hảo</h3>
           <p class="signature-desc">
-            We've spent six years perfecting a single shot. Our house espresso blend — a 70/30 split of Arabica and Robusta from Coorg and Chikmagalur — is pulled at 9 bars of pressure, 93°C, for exactly 28 seconds. The result is a shot with a thick, tiger-striped crema, notes of dark cherry, and a finish that lingers.
+            Chúng tôi dành sáu năm để hoàn thiện từng shot espresso. Cà phê phối trộn đặc trưng theo tỷ lệ 70/30 giữa Arabica và Robusta từ Coorg, Chikmagalur, chiết xuất ở áp suất 9 bar, nhiệt độ 93°C trong đúng 28 giây. Thành phẩm có lớp crema dày vân hổ, hương anh đào đen và hậu vị lưu luyến.
           </p>
-          <a href="#menu" class="btn btn-outline magnetic" id="sig1-cta">See Coffee Menu →</a>
+          <a href="#menu" class="btn btn-outline magnetic" id="sig1-cta">Xem thực đơn cà phê →</a>
         </div>
       </div>
 
@@ -555,15 +554,15 @@
       <div class="signature-item signature-item--reversed">
         <div class="signature-image-wrap clip-reveal">
           <!-- IMAGE: asstes/shixugang-coffee-563800.jpg (milk pour into coffee) -->
-          <img src="asstes/shixugang-coffee-563800.jpg" alt="Ceremonial milk pour — our latte art craft" class="signature-img" loading="lazy" decoding="async" />
+          <img src="asstes/shixugang-coffee-563800.jpg" alt="Nghi thức rót sữa — nghệ thuật latte của quán" class="signature-img" loading="lazy" decoding="async" />
         </div>
         <div class="signature-content reveal-up">
           <span class="signature-number" aria-hidden="true">02</span>
-          <h3 class="signature-title">The Milk Pour Ritual</h3>
+          <h3 class="signature-title">Nghệ thuật rót sữa</h3>
           <p class="signature-desc">
-            Our baristas train for six months before pouring a cup. Every cappuccino and flat white is finished with freehand latte art — not for decoration, but as a signal of care. When you receive a beautifully poured cup, you know that every detail of your coffee has been attended to.
+            Barista của chúng tôi rèn luyện sáu tháng trước khi tự tay pha một tách cà phê. Mỗi ly cappuccino hay flat white đều được hoàn thiện bằng latte art vẽ tay — không chỉ để trang trí, mà còn thể hiện sự chăm chút. Một tách cà phê đẹp mắt là lời cam kết rằng mọi chi tiết đều được nâng niu.
           </p>
-          <a href="#reservation" class="btn btn-outline magnetic" id="sig2-cta">Reserve Your Morning →</a>
+          <a href="#reservation" class="btn btn-outline magnetic" id="sig2-cta">Đặt chỗ cho buổi sáng của bạn →</a>
         </div>
       </div>
 
@@ -571,15 +570,15 @@
       <div class="signature-item signature-item--normal">
         <div class="signature-image-wrap clip-reveal">
           <!-- IMAGE: asstes/matteophotopro2020-mussels-5342679_1920.jpg (seafood pasta) -->
-          <img src="asstes/matteophotopro2020-mussels-5342679_1920.jpg" alt="Our signature coastal seafood linguine" class="signature-img" loading="lazy" decoding="async" />
+          <img src="asstes/matteophotopro2020-mussels-5342679_1920.jpg" alt="Món mì linguine hải sản đặc sắc của quán" class="signature-img" loading="lazy" decoding="async" />
         </div>
         <div class="signature-content reveal-up">
           <span class="signature-number" aria-hidden="true">03</span>
-          <h3 class="signature-title">The Weekend Kitchen</h3>
+          <h3 class="signature-title">Bếp cuối tuần</h3>
           <p class="signature-desc">
-            Our weekend kitchen is a different affair. Our chef, Priya, trained at culinary schools in Tokyo and Paris before coming home to build something local. Her seasonal menus — from stone-fired sourdoughs to coastal seafood linguine — change every week based on what's freshest at the market.
+            Bếp cuối tuần mang đến những trải nghiệm khác biệt. Đầu bếp Priya từng học ẩm thực tại Tokyo và Paris trước khi trở về tạo nên hương vị địa phương. Thực đơn theo mùa — từ sourdough nướng lò đá đến linguine hải sản — thay đổi mỗi tuần theo nguyên liệu tươi ngon nhất ở chợ.
           </p>
-          <a href="#menu" class="btn btn-outline magnetic" id="sig3-cta">View Full Menu →</a>
+          <a href="#menu" class="btn btn-outline magnetic" id="sig3-cta">Xem toàn bộ thực đơn →</a>
         </div>
       </div>
 
@@ -591,9 +590,9 @@
     <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-label reveal-text" data-split="chars">— Moments</div>
+          <div class="section-label reveal-text" data-split="chars">— Khoảnh khắc</div>
           <h2 class="section-heading reveal-text" id="gallery-heading" data-split="lines">
-            Life at<br/><em>Mocha &amp; Miso.</em>
+            Những khoảnh khắc tại<br/><em>Mocha &amp; Miso.</em>
           </h2>
         </div>
       </div>
@@ -603,7 +602,7 @@
         <div class="gallery-item gallery-item--tall" role="listitem">
           <!-- IMAGE: asstes/8088465-garden-7111101.jpg -->
           <div class="gallery-item-inner">
-            <img src="asstes/8088465-garden-7111101.jpg" alt="Sunlit garden terrace at Mocha & Miso" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/8088465-garden-7111101.jpg" alt="Hiên sân vườn ngập nắng tại Mocha & Miso" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -613,7 +612,7 @@
         <div class="gallery-item" role="listitem">
           <!-- IMAGE: asstes/pc500k-seoul-7106196.jpg -->
           <div class="gallery-item-inner">
-            <img src="asstes/pc500k-seoul-7106196.jpg" alt="Industrial modern interior with communal table" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/pc500k-seoul-7106196.jpg" alt="Không gian hiện đại phong cách công nghiệp với bàn dài chung" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -623,7 +622,7 @@
         <div class="gallery-item" role="listitem">
           <!-- IMAGE: asstes/shixugang-coffee-563800.jpg -->
           <div class="gallery-item-inner">
-            <img src="asstes/shixugang-coffee-563800.jpg" alt="Milk being poured into espresso" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/shixugang-coffee-563800.jpg" alt="Dòng sữa đang được rót vào espresso" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -633,7 +632,7 @@
         <div class="gallery-item gallery-item--wide" role="listitem">
           <!-- IMAGE: asstes/hoahoa111-cafe-5972490.jpg -->
           <div class="gallery-item-inner">
-            <img src="asstes/hoahoa111-cafe-5972490.jpg" alt="Guest reading by afternoon light at Mocha & Miso" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/hoahoa111-cafe-5972490.jpg" alt="Khách đọc sách bên ánh nắng chiều tại Mocha & Miso" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -643,7 +642,7 @@
         <div class="gallery-item gallery-item--tall" role="listitem">
           <!-- IMAGE: asstes/bbom100892-cafe-7454951.jpg -->
           <div class="gallery-item-inner">
-            <img src="asstes/bbom100892-cafe-7454951.jpg" alt="Our vintage La Marzocco espresso machine" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/bbom100892-cafe-7454951.jpg" alt="Máy pha espresso La Marzocco cổ điển của quán" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -653,7 +652,7 @@
         <div class="gallery-item" role="listitem">
           <!-- IMAGE: asstes/pexels-brick-wall-1834784.jpg -->
           <div class="gallery-item-inner">
-            <img src="asstes/pexels-brick-wall-1834784.jpg" alt="Warm brick wall seating nook with Edison lights" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/pexels-brick-wall-1834784.jpg" alt="Góc ngồi ấm cúng bên tường gạch và đèn Edison" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -663,7 +662,7 @@
         <div class="gallery-item gallery-item--tall" role="listitem">
           <!-- IMAGE: asstes/gallery_cozy_corner.png -->
           <div class="gallery-item-inner">
-            <img src="asstes/gallery_cozy_corner.png" alt="Sunlit cozy seating corner with green plants" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/gallery_cozy_corner.png" alt="Góc ngồi ấm áp ngập nắng bên những chậu cây xanh" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -673,7 +672,7 @@
         <div class="gallery-item" role="listitem">
           <!-- IMAGE: asstes/gallery_barista_pour.png -->
           <div class="gallery-item-inner">
-            <img src="asstes/gallery_barista_pour.png" alt="Barista pouring precision swan latte art" class="gallery-img" loading="lazy" decoding="async" />
+            <img src="asstes/gallery_barista_pour.png" alt="Barista khéo léo tạo hình thiên nga trên tách latte" class="gallery-img" loading="lazy" decoding="async" />
             <div class="gallery-item-overlay" aria-hidden="true">
               <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             </div>
@@ -688,70 +687,70 @@
     <!-- ============================================================ -->
     <section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
       <div class="container">
-        <div class="section-label reveal-text" data-split="chars">— What Guests Say</div>
+        <div class="section-label reveal-text" data-split="chars">— Khách hàng chia sẻ</div>
         <h2 class="section-heading reveal-text" id="testimonials-heading" data-split="lines">
-          Words from our<br/><em>community.</em>
+          Lời yêu thương từ<br/><em>những vị khách thân quen.</em>
         </h2>
 
-        <div class="testimonials-slider" id="testimonials-slider" aria-roledescription="carousel" aria-label="Customer testimonials">
+        <div class="testimonials-slider" id="testimonials-slider" aria-roledescription="carousel" aria-label="Đánh giá của khách hàng">
           <div class="testimonials-track" id="testimonials-track">
 
-            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Testimonial 1 of 5">
-              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote class="testimonial-quote">"I've been to coffee shops across three continents and Mocha & Miso is genuinely one of the most special. The espresso is extraordinary, the space is calming, and the team feels like family."</blockquote>
+            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Đánh giá 1 trên 5">
+              <div class="testimonial-stars" aria-label="5 trên 5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">"Tôi đã ghé những quán cà phê ở ba châu lục, và Mocha & Miso thực sự là một nơi đặc biệt. Espresso tuyệt hảo, không gian thư thái và đội ngũ thân tình như gia đình."</blockquote>
               <div class="testimonial-author">
                 <div class="testimonial-avatar" aria-hidden="true">A</div>
                 <div class="testimonial-info">
                   <strong>Arjun Mehta</strong>
-                  <span>Coffee Enthusiast · Mumbai</span>
+                  <span>Người yêu cà phê · Mumbai</span>
                 </div>
               </div>
             </div>
 
-            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Testimonial 2 of 5">
-              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote class="testimonial-quote">"The soufflé pancakes are worth every minute of the wait. Light, pillowy, and topped with the most beautiful seasonal fruit. This place is my weekend ritual."</blockquote>
+            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Đánh giá 2 trên 5">
+              <div class="testimonial-stars" aria-label="5 trên 5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">"Bánh pancake soufflé rất đáng để chờ đợi. Bánh nhẹ, mềm xốp, phủ trái cây theo mùa đẹp mắt. Cuối tuần nào tôi cũng muốn ghé nơi này."</blockquote>
               <div class="testimonial-author">
                 <div class="testimonial-avatar" aria-hidden="true">P</div>
                 <div class="testimonial-info">
                   <strong>Priya Krishnamurthy</strong>
-                  <span>Food Writer · Bangalore</span>
+                  <span>Người viết về ẩm thực · Bangalore</span>
                 </div>
               </div>
             </div>
 
-            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Testimonial 3 of 5">
-              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote class="testimonial-quote">"Finally a café that understands what a third place means. Not too loud, not too quiet. You can work, read, or just sit and breathe. The cold brew is perfect every single time."</blockquote>
+            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Đánh giá 3 trên 5">
+              <div class="testimonial-stars" aria-label="5 trên 5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">"Cuối cùng cũng có một quán cà phê hiểu thế nào là không gian thứ ba. Không quá ồn cũng chẳng quá yên. Bạn có thể làm việc, đọc sách hay đơn giản là ngồi thư giãn. Cold brew lần nào cũng hoàn hảo."</blockquote>
               <div class="testimonial-author">
                 <div class="testimonial-avatar" aria-hidden="true">S</div>
                 <div class="testimonial-info">
                   <strong>Shivani Nair</strong>
-                  <span>Designer · Pune</span>
+                  <span>Nhà thiết kế · Pune</span>
                 </div>
               </div>
             </div>
 
-            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Testimonial 4 of 5">
-              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote class="testimonial-quote">"The atmosphere here is something I haven't felt anywhere else in the city. Warm, intentional, calm. My wife and I come here every anniversary morning for our ritual espresso."</blockquote>
+            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Đánh giá 4 trên 5">
+              <div class="testimonial-stars" aria-label="5 trên 5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">"Không khí ở đây thật khác biệt so với bất kỳ nơi nào trong thành phố: ấm áp, tinh tế và bình yên. Sáng kỷ niệm nào vợ chồng tôi cũng ghé thưởng thức espresso quen thuộc."</blockquote>
               <div class="testimonial-author">
                 <div class="testimonial-avatar" aria-hidden="true">R</div>
                 <div class="testimonial-info">
                   <strong>Rahul & Divya Sharma</strong>
-                  <span>Regulars since 2020 · Delhi</span>
+                  <span>Khách quen từ năm 2020 · Delhi</span>
                 </div>
               </div>
             </div>
 
-            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Testimonial 5 of 5">
-              <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote class="testimonial-quote">"I hosted a private dinner here and the team went above and beyond. Chef Priya's seasonal tasting menu was genuinely one of the best meals I've had. This isn't just a café — it's an experience."</blockquote>
+            <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="Đánh giá 5 trên 5">
+              <div class="testimonial-stars" aria-label="5 trên 5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">"Tôi từng tổ chức một bữa tối riêng tại đây và đội ngũ đã chăm chút hơn cả mong đợi. Thực đơn nếm thử theo mùa của đầu bếp Priya là một trong những bữa ăn ngon nhất tôi từng thưởng thức. Đây không chỉ là quán cà phê, mà là một trải nghiệm."</blockquote>
               <div class="testimonial-author">
                 <div class="testimonial-avatar" aria-hidden="true">K</div>
                 <div class="testimonial-info">
                   <strong>Kavya Iyer</strong>
-                  <span>Events Director · Chennai</span>
+                  <span>Giám đốc sự kiện · Chennai</span>
                 </div>
               </div>
             </div>
@@ -759,12 +758,12 @@
           </div><!-- /track -->
 
           <!-- Controls -->
-          <div class="testimonials-controls" role="group" aria-label="Slider controls">
-            <button class="testimonial-btn" id="testimonial-prev" aria-label="Previous testimonial">
+          <div class="testimonials-controls" role="group" aria-label="Điều khiển đánh giá">
+            <button class="testimonial-btn" id="testimonial-prev" aria-label="Đánh giá trước">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
-            <div class="testimonials-dots" id="testimonials-dots" role="tablist" aria-label="Testimonial navigation"></div>
-            <button class="testimonial-btn" id="testimonial-next" aria-label="Next testimonial">
+            <div class="testimonials-dots" id="testimonials-dots" role="tablist" aria-label="Chọn đánh giá"></div>
+            <button class="testimonial-btn" id="testimonial-next" aria-label="Đánh giá tiếp theo">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </div>
@@ -776,18 +775,18 @@
     <!-- ============================================================ -->
     <!-- ATMOSPHERE / FULL-WIDTH BREAK SECTION -->
     <!-- ============================================================ -->
-    <section class="atmosphere" id="atmosphere" aria-label="Café atmosphere">
+    <section class="atmosphere" id="atmosphere" aria-label="Không gian quán cà phê">
       <div class="atmosphere-image-wrap parallax-image-wrap">
         <!-- IMAGE: asstes/sklorg-french-restaurant-2506490.jpg -->
-        <img src="asstes/sklorg-french-restaurant-2506490.jpg" alt="Evening atmosphere — welcoming café exterior with warm light" class="atmosphere-img parallax-img" loading="lazy" decoding="async" />
+        <img src="asstes/sklorg-french-restaurant-2506490.jpg" alt="Không gian buổi tối — mặt tiền quán cà phê thân thiện dưới ánh đèn ấm áp" class="atmosphere-img parallax-img" loading="lazy" decoding="async" />
         <div class="atmosphere-overlay"></div>
       </div>
       <div class="atmosphere-content container">
-        <p class="atmosphere-label reveal-text" data-split="chars">A place to belong</p>
+        <p class="atmosphere-label reveal-text" data-split="chars">Nơi bạn luôn thuộc về</p>
         <h2 class="atmosphere-heading reveal-text" data-split="words">
-          "Come as you are.<br/>Stay as long as you need."
+          "Hãy đến như chính bạn.<br/>Cứ ở lại lâu tùy thích."
         </h2>
-        <a href="#reservation" class="btn btn-light magnetic" id="atmosphere-cta">Make a Reservation</a>
+        <a href="#reservation" class="btn btn-light magnetic" id="atmosphere-cta">Đặt chỗ ngay</a>
       </div>
     </section>
 
@@ -798,106 +797,106 @@
       <div class="reservation-inner">
 
         <div class="reservation-content">
-          <div class="section-label reveal-text" data-split="chars">— Reserve</div>
+          <div class="section-label reveal-text" data-split="chars">— Đặt bàn</div>
           <h2 class="section-heading reveal-text" id="reservation-heading" data-split="lines">
-            Join us for<br/><em>a slow morning.</em>
+            Ghé thăm chúng tôi<br/><em>trong một sớm thong thả.</em>
           </h2>
           <p class="reservation-subtext reveal-up">
-            Walk-ins are always welcome, but reservations ensure we set the perfect table for you. For groups of 6 or more, please call us directly.
+            Bạn luôn có thể ghé quán mà không cần đặt trước, nhưng đặt bàn sẽ giúp chúng tôi chuẩn bị chỗ ngồi chu đáo nhất. Với nhóm từ 6 khách trở lên, vui lòng gọi trực tiếp cho quán.
           </p>
           <div class="reservation-info reveal-up">
             <div class="res-info-item">
-              <span class="res-info-label">Breakfast</span>
-              <span class="res-info-val">Mon–Fri: 7:30am–11:30am</span>
+              <span class="res-info-label">Bữa sáng</span>
+              <span class="res-info-val">Thứ Hai–Thứ Sáu: 7:30–11:30</span>
             </div>
             <div class="res-info-item">
-              <span class="res-info-label">Lunch</span>
-              <span class="res-info-val">Mon–Sun: 12:00pm–3:30pm</span>
+              <span class="res-info-label">Bữa trưa</span>
+              <span class="res-info-val">Thứ Hai–Chủ Nhật: 12:00–15:30</span>
             </div>
             <div class="res-info-item">
-              <span class="res-info-label">Dinner</span>
-              <span class="res-info-val">Thu–Sun: 6:30pm–10:00pm</span>
+              <span class="res-info-label">Bữa tối</span>
+              <span class="res-info-val">Thứ Năm–Chủ Nhật: 18:30–22:00</span>
             </div>
           </div>
         </div>
 
         <div class="reservation-form-wrap reveal-up">
-          <form class="reservation-form" id="reservation-form" novalidate aria-label="Table reservation form">
+          <form class="reservation-form" id="reservation-form" novalidate aria-label="Biểu mẫu đặt bàn">
             <div class="form-group">
               <input type="text" id="res-name" name="name" class="form-input" placeholder=" " required autocomplete="name" />
-              <label for="res-name" class="form-label">Full Name</label>
+              <label for="res-name" class="form-label">Họ và tên</label>
               <span class="form-line"></span>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <input type="email" id="res-email" name="email" class="form-input" placeholder=" " required autocomplete="email" />
-                <label for="res-email" class="form-label">Email Address</label>
+                <label for="res-email" class="form-label">Địa chỉ email</label>
                 <span class="form-line"></span>
               </div>
               <div class="form-group">
                 <input type="tel" id="res-phone" name="phone" class="form-input" placeholder=" " autocomplete="tel" />
-                <label for="res-phone" class="form-label">Phone (optional)</label>
+                <label for="res-phone" class="form-label">Số điện thoại (không bắt buộc)</label>
                 <span class="form-line"></span>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <input type="date" id="res-date" name="date" class="form-input form-input--date" required />
-                <label for="res-date" class="form-label form-label--up">Date</label>
+                <label for="res-date" class="form-label form-label--up">Ngày</label>
                 <span class="form-line"></span>
               </div>
               <div class="form-group">
                 <select id="res-time" name="time" class="form-input form-input--select" required>
                   <option value="" disabled selected></option>
-                  <option value="0730">7:30 AM</option>
-                  <option value="0800">8:00 AM</option>
-                  <option value="0830">8:30 AM</option>
-                  <option value="0900">9:00 AM</option>
-                  <option value="0930">9:30 AM</option>
-                  <option value="1000">10:00 AM</option>
-                  <option value="1030">10:30 AM</option>
-                  <option value="1200">12:00 PM</option>
-                  <option value="1230">12:30 PM</option>
-                  <option value="1300">1:00 PM</option>
-                  <option value="1330">1:30 PM</option>
-                  <option value="1400">2:00 PM</option>
-                  <option value="1830">6:30 PM</option>
-                  <option value="1900">7:00 PM</option>
-                  <option value="1930">7:30 PM</option>
-                  <option value="2000">8:00 PM</option>
+                  <option value="0730">7:30 sáng</option>
+                  <option value="0800">8:00 sáng</option>
+                  <option value="0830">8:30 sáng</option>
+                  <option value="0900">9:00 sáng</option>
+                  <option value="0930">9:30 sáng</option>
+                  <option value="1000">10:00 sáng</option>
+                  <option value="1030">10:30 sáng</option>
+                  <option value="1200">12:00 trưa</option>
+                  <option value="1230">12:30 trưa</option>
+                  <option value="1300">13:00</option>
+                  <option value="1330">13:30</option>
+                  <option value="1400">14:00</option>
+                  <option value="1830">18:30</option>
+                  <option value="1900">19:00</option>
+                  <option value="1930">19:30</option>
+                  <option value="2000">20:00</option>
                 </select>
-                <label for="res-time" class="form-label form-label--up">Time</label>
+                <label for="res-time" class="form-label form-label--up">Giờ</label>
                 <span class="form-line"></span>
               </div>
             </div>
             <div class="form-group">
-              <div class="guests-selector" role="group" aria-label="Number of guests">
-                <span class="guests-label">Guests</span>
+              <div class="guests-selector" role="group" aria-label="Số lượng khách">
+                <span class="guests-label">Số khách</span>
                 <div class="guests-controls">
-                  <button type="button" class="guests-btn" id="guests-minus" aria-label="Decrease guests">−</button>
+                  <button type="button" class="guests-btn" id="guests-minus" aria-label="Giảm số khách">−</button>
                   <span class="guests-count" id="guests-count" aria-live="polite">2</span>
-                  <button type="button" class="guests-btn" id="guests-plus" aria-label="Increase guests">+</button>
+                  <button type="button" class="guests-btn" id="guests-plus" aria-label="Tăng số khách">+</button>
                 </div>
               </div>
               <input type="hidden" id="res-guests" name="guests" value="2" />
             </div>
             <div class="form-group">
               <textarea id="res-notes" name="notes" class="form-input form-textarea" placeholder=" " rows="3"></textarea>
-              <label for="res-notes" class="form-label">Special requests (optional)</label>
+              <label for="res-notes" class="form-label">Yêu cầu thêm (không bắt buộc)</label>
               <span class="form-line"></span>
             </div>
             <button type="submit" class="btn btn-primary btn-full magnetic" id="res-submit">
-              <span class="btn-text">Confirm Reservation</span>
+              <span class="btn-text">Xác nhận đặt bàn</span>
               <span class="btn-ripple" aria-hidden="true"></span>
             </button>
-            <p class="form-disclaimer">We'll send a confirmation to your email within 30 minutes.</p>
+            <p class="form-disclaimer">Chúng tôi sẽ gửi email xác nhận trong vòng 30 phút.</p>
           </form>
           <!-- Success message -->
           <div class="form-success" id="form-success" hidden aria-live="polite">
             <div class="form-success-icon" aria-hidden="true">✓</div>
-            <h3>Reservation Received!</h3>
-            <p>Thank you. We'll confirm your table within 30 minutes. See you soon.</p>
-            <button type="button" class="btn btn-outline" id="res-another-btn" style="margin-top:24px; font-size:13px; padding:10px 22px;">Book Another Table</button>
+            <h3>Đã nhận yêu cầu đặt bàn!</h3>
+            <p>Cảm ơn bạn. Chúng tôi sẽ xác nhận bàn trong vòng 30 phút. Hẹn sớm gặp bạn.</p>
+            <button type="button" class="btn btn-outline" id="res-another-btn" style="margin-top:24px; font-size:13px; padding:10px 22px;">Đặt thêm bàn</button>
           </div>
         </div>
 
@@ -910,40 +909,40 @@
     <section class="contact" id="contact" aria-labelledby="contact-heading">
       <div class="container">
 
-        <div class="section-label reveal-text" data-split="chars">— Find Us</div>
+        <div class="section-label reveal-text" data-split="chars">— Tìm chúng tôi</div>
         <h2 class="section-heading reveal-text" id="contact-heading" data-split="lines">
-          Come and say<br/><em>hello.</em>
+          Ghé qua và<br/><em>chào chúng tôi nhé.</em>
         </h2>
 
         <div class="contact-grid">
 
           <!-- Hours -->
           <div class="contact-block reveal-up">
-            <h3 class="contact-block-title">Opening Hours</h3>
+            <h3 class="contact-block-title">Giờ mở cửa</h3>
             <ul class="hours-list" role="list">
-              <li class="hours-item"><span>Monday – Wednesday</span><span>7:30am – 6:00pm</span></li>
-              <li class="hours-item"><span>Thursday – Friday</span><span>7:30am – 10:00pm</span></li>
-              <li class="hours-item"><span>Saturday – Sunday</span><span>8:00am – 10:00pm</span></li>
+              <li class="hours-item"><span>Thứ Hai – Thứ Tư</span><span>7:30 – 18:00</span></li>
+              <li class="hours-item"><span>Thứ Năm – Thứ Sáu</span><span>7:30 – 22:00</span></li>
+              <li class="hours-item"><span>Thứ Bảy – Chủ Nhật</span><span>8:00 – 22:00</span></li>
             </ul>
           </div>
 
           <!-- Map placeholder -->
           <div class="contact-block contact-map-block reveal-up">
-            <div class="contact-map-placeholder" aria-label="Map location of Mocha & Miso Café">
+            <div class="contact-map-placeholder" aria-label="Bản đồ vị trí quán cà phê Mocha & Miso">
               <div class="map-inner">
                 <svg class="map-pin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
                   <circle cx="12" cy="9" r="2.5"/>
                 </svg>
                 <p class="map-address">42, Lavelle Road, Ashok Nagar,<br/>Bangalore — 560001</p>
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline magnetic map-btn" id="map-link">Open in Maps</a>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline magnetic map-btn" id="map-link">Mở bản đồ</a>
               </div>
             </div>
           </div>
 
           <!-- Contact info -->
           <div class="contact-block reveal-up">
-            <h3 class="contact-block-title">Get in Touch</h3>
+            <h3 class="contact-block-title">Liên hệ</h3>
             <ul class="contact-list" role="list">
               <li class="contact-item">
                 <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 10.81a19.79 19.79 0 01-3.07-8.67A2 2 0 011.9 0h3a2 2 0 012 1.72c.12.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L5.91 7.91A16 16 0 0016.09 18.1l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.56 2.81.68A2 2 0 0122 16.92z"/></svg>
@@ -978,29 +977,29 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo-img-wrap">
-            <img src="asstes/logo_icon.jpg" alt="Mocha and Miso logo" class="footer-logo-img" />
+            <img src="asstes/logo_icon.jpg" alt="Logo Mocha & Miso" class="footer-logo-img" />
           </div>
-          <p class="footer-tagline">A craft café experience.</p>
+          <p class="footer-tagline">Trải nghiệm cà phê thủ công.</p>
         </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
+        <nav class="footer-nav" aria-label="Điều hướng cuối trang">
           <ul class="footer-links" role="list">
-            <li><a href="#about">Our Story</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#reservation">Reserve</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="admin.html" target="_blank" style="color: rgba(248,245,242,0.4); text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em;">Staff Portal</a></li>
+            <li><a href="#about">Câu chuyện</a></li>
+            <li><a href="#menu">Thực đơn</a></li>
+            <li><a href="#gallery">Thư viện ảnh</a></li>
+            <li><a href="#reservation">Đặt bàn</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+            <li><a href="admin.html" target="_blank" style="color: rgba(248,245,242,0.4); text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em;">Cổng nhân viên</a></li>
           </ul>
         </nav>
-        <div class="footer-social" aria-label="Social media links">
+        <div class="footer-social" aria-label="Liên kết mạng xã hội">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">IG</a>
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">FB</a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2025 Mocha &amp; Miso. All rights reserved.</p>
-        <p class="footer-made">Handcrafted with love &amp; espresso.</p>
+        <p class="footer-copy">&copy; 2025 Mocha &amp; Miso. Bảo lưu mọi quyền.</p>
+        <p class="footer-made">Được tạo nên bằng tình yêu và espresso.</p>
       </div>
     </div>
   </footer>
@@ -1008,41 +1007,41 @@
   <!-- Success Confirmation Modal -->
   <div class="res-modal-overlay" id="reservation-success-modal" hidden aria-hidden="true" role="dialog" aria-labelledby="res-modal-title">
     <div class="res-modal-card">
-      <button type="button" class="res-modal-close" id="res-modal-close-icon" aria-label="Close modal">&times;</button>
+      <button type="button" class="res-modal-close" id="res-modal-close-icon" aria-label="Đóng cửa sổ">&times;</button>
       
       <div class="res-modal-header">
         <div class="res-modal-badge-icon">✓</div>
-        <h3 class="res-modal-title" id="res-modal-title">Reservation Confirmed</h3>
-        <p class="res-modal-subtitle">Thank you for choosing Mocha &amp; Miso.</p>
-        <p class="res-modal-message">We have received your table request and sent a confirmation to your email address.</p>
+        <h3 class="res-modal-title" id="res-modal-title">Đã nhận yêu cầu đặt bàn</h3>
+        <p class="res-modal-subtitle">Cảm ơn bạn đã chọn Mocha &amp; Miso.</p>
+        <p class="res-modal-message">Chúng tôi đã nhận yêu cầu và gửi email xác nhận đến bạn.</p>
       </div>
 
       <div class="res-modal-details">
         <div class="res-detail-row">
-          <span class="res-detail-label">Reservation ID</span>
+          <span class="res-detail-label">Mã đặt bàn</span>
           <span class="res-detail-value res-detail-code" id="modal-res-id">RES-8829</span>
         </div>
         <div class="res-detail-row">
-          <span class="res-detail-label">Customer Name</span>
+          <span class="res-detail-label">Tên khách hàng</span>
           <span class="res-detail-value" id="modal-res-name">-</span>
         </div>
         <div class="res-detail-row">
-          <span class="res-detail-label">Date</span>
+          <span class="res-detail-label">Ngày</span>
           <span class="res-detail-value" id="modal-res-date">-</span>
         </div>
         <div class="res-detail-row">
-          <span class="res-detail-label">Time</span>
+          <span class="res-detail-label">Giờ</span>
           <span class="res-detail-value" id="modal-res-time">-</span>
         </div>
         <div class="res-detail-row">
-          <span class="res-detail-label">Number of Guests</span>
+          <span class="res-detail-label">Số lượng khách</span>
           <span class="res-detail-value" id="modal-res-guests">-</span>
         </div>
       </div>
 
       <div class="res-modal-actions">
-        <button type="button" class="btn btn-outline" id="res-modal-view-btn">View Reservation</button>
-        <button type="button" class="btn btn-primary" id="res-modal-home-btn">Back to Home</button>
+        <button type="button" class="btn btn-outline" id="res-modal-view-btn">Xem thông tin đặt bàn</button>
+        <button type="button" class="btn btn-primary" id="res-modal-home-btn">Về đầu trang</button>
       </div>
     </div>
   </div>
@@ -1065,7 +1064,7 @@
   </script>
 
   <!-- Firebase + Main JS -->
-  <script src="firebase.js" defer></script>
+  <script src="firebase.js?v=2" defer></script>
   <script src="main.js" defer></script>
 
 </body>

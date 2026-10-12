@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1c1410" />
+  <title>Gọi món tại bàn | Mocha & Miso</title>
+  <link rel="stylesheet" href="order.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js" defer></script>
+  <script src="firebase.js?v=2" defer></script>
+    <script src="order.js" defer></script>
+</head>
+<body>
+  <main class="order-shell">
+    <header class="order-header">
+      <div>
+        <p class="eyebrow">Mocha &amp; Miso</p>
+        <h1>Gọi món tại bàn</h1>
+      </div>
+      <div class="table-pill" id="table-label">Đang kiểm tra bàn...</div>
+    </header>
+
+    <section class="order-layout" id="order-app" hidden>
+      <div class="menu-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Thực đơn hôm nay</p>
+            <h2>Chọn món bạn thích</h2>
+          </div>
+          <span class="menu-count" id="menu-count"></span>
+        </div>
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Danh mục món"></div>
+        <div class="order-menu-grid" id="order-menu-grid"></div>
+      </div>
+
+      <aside class="cart-panel" aria-label="Giỏ món đã chọn">
+        <div class="cart-heading">
+          <div>
+            <p class="eyebrow">Bàn của bạn</p>
+            <h2>Đơn gọi món</h2>
+          </div>
+          <span class="cart-badge" id="cart-count">0</span>
+        </div>
+        <div class="cart-items" id="cart-items">
+          <p class="empty-cart">Chọn món trong thực đơn để bắt đầu.</p>
+        </div>
+        <label class="note-label" for="order-note">Ghi chú cho quầy bar/bếp</label>
+        <textarea id="order-note" rows="3" placeholder="Ví dụ: ít đá, không đường..."></textarea>
+        <div class="cart-total"><span>Tạm tính</span><strong id="cart-total">0 ₫</strong></div>
+        <button class="order-submit" id="submit-order" type="button" disabled>Gửi đơn gọi món</button>
+        <p class="order-hint">Nhân viên sẽ nhận đơn và mang món đến đúng bàn.</p>
+      </aside>
+    </section>
+
+    <section class="order-state" id="invalid-table" hidden>
+      <div class="state-icon">!</div>
+      <h2>QR bàn không hợp lệ</h2>
+      <p>Vui lòng quét lại mã QR được đặt trên bàn của bạn.</p>
+    </section>
+
+    <section class="order-state" id="order-success" hidden>
+      <div class="state-icon">✓</div>
+      <p class="eyebrow">Đơn đã được gửi</p>
+      <h2>Nhân viên đang tiếp nhận món</h2>
+      <p>Mã đơn: <strong id="success-order-id"></strong></p>
+      <button class="order-submit secondary" id="new-order" type="button">Gọi thêm món</button>
+    </section>
+  </main>
+</body>
+</html>
